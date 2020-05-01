@@ -1,0 +1,253 @@
+{% extends "::layout_interne.html.twig" %}
+{% block body %}
+
+    <script src="{{asset("js/jquery.js")}}"></script>
+    <script src={{ asset('tinymce/tinymce.min.js') }}></script>
+
+
+
+    <script>
+
+        $(document).ready(function() {
+
+            tinymce.init({
+                selector: '#adminbundle_evenement_descriptionEvenement',
+                height: 200,
+                theme: 'modern',
+                plugins: [
+                    'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+                    'searchreplace wordcount visualblocks visualchars code fullscreen',
+                    'insertdatetime media nonbreaking save table contextmenu directionality',
+                    'emoticons template paste textcolor colorpicker textpattern imagetools'
+                ],
+                toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+                toolbar2: 'print preview media | forecolor backcolor emoticons',
+                image_advtab: true
+            });
+
+        });
+
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
+            var $container = $('div#adminbundle_evenement_Classebillets');
+
+            // On ajoute un lien pour ajouter une nouvelle catégorie
+            var $addLink = $('<a href="#" id="add_category" class="btn btn-default">Ajouter une classe billet</a>');
+            $container.append($addLink);
+
+            // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
+            $addLink.click(function(e) {
+                addCategory($container);
+                e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+                return false;
+            });
+
+            // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
+            var index = $container.find(':input').length;
+
+            // On ajoute un premier champ automatiquement s'il n'en existe pas déjà un (cas d'une nouvelle annonce par exemple).
+            if (index == 0) {
+                addCategory($container);
+            } else {
+                // Pour chaque catégorie déjà existante, on ajoute un lien de suppression
+                $container.children('div').each(function() {
+                    addDeleteLink($(this));
+                });
+            }
+
+            // La fonction qui ajoute un formulaire Categorie
+            function addCategory($container) {
+                // Dans le contenu de l'attribut « data-prototype », on remplace :
+                // - le texte "__name__label__" qu'il contient par le label du champ
+                // - le texte "__name__" qu'il contient par le numéro du champ
+                var $prototype = $($container.attr('data-prototype').replace(/__name__label__/g, 'Classe billet n°' + (index+1))
+                    .replace(/__name__/g, index));
+
+                // On ajoute au prototype un lien pour pouvoir supprimer la catégorie
+                addDeleteLink($prototype);
+
+                // On ajoute le prototype modifié à la fin de la balise <div>
+                $container.append($prototype);
+
+                // Enfin, on incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
+                index++;
+            }
+
+            // La fonction qui ajoute un lien de suppression d'une catégorie
+            function addDeleteLink($prototype) {
+                // Création du lien
+                $deleteLink = $('<a href="#" class="btn btn-danger">Supprimer</a>');
+
+                // Ajout du lien
+                $prototype.append($deleteLink);
+
+                // Ajout du listener sur le clic du lien
+                $deleteLink.click(function(e) {
+                    $prototype.remove();
+                    e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+                    return false;
+                });
+            }
+        });
+    </script>
+
+
+    <header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{asset('images/many.jpg')}}" data-background-mobile="{{asset('images/many.jpg')}}" class="ct-mediaSection">
+        <div class="ct-breadcrumbs">
+            <ul class="list-inline list-unstyled">
+                <li><a href="{{ path('accueil')}}"><i class="fa fa-home"></i></a></li><li><a href="{{ path('profil')}}"><i class="fa fa-angle-right"></i>Tableau De Bord</a><i class="fa fa-angle-right"></i>Créer un evenement</li>
+            </ul>
+        </div>
+    </header>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ct-textBox--small ct-u-backgroundGrey ct-u-marginTop50 ct-u-marginBottom60 ct-u-colorBlackLight">
+
+                    <div class="clearfix"></div>
+
+
+
+
+
+                    <form class="ct-form" method="post" action="{{ path('ajouterEvenementEtCatBillet') }}" enctype="multipart/form-data">
+                        {#{{ form_start(form) }}#}
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div><span class="ct-fw-600"><h3><i class="fa fa-star"> Nouvel événement</i></h3></span></div><br>
+                                <div class="row">
+
+                                    <div class="col-md-6">
+
+                                        <div><span class="ct-fw-600"><h5>{{ form_label(form.titreEvenement) }}</h5></span>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-italic">
+                                                    </i>
+                                                </div>
+                                                {{ form_widget(form.titreEvenement,  { 'attr': {'placeholder': 'Titre','class': 'form-control input--withBorder ct-u-marginBottom10 input-focusMotive' }}) }}
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div><span class="ct-fw-600"><h5>{{ form_label(form.categorie) }}</h5></span>
+
+                                            {{ form_widget(form.categorie,  { 'attr': {'placeholder': 'Titre','class': 'form-control input--withBorder ct-u-marginBottom10 input-focusMotive' }}) }}
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12"><br>
+                                <div><span class="ct-fw-600"><h3><i class="fa fa-calendar"> Quand ?</i></h3></span></div><br>
+                                <div class="row">
+                                    <div class="col-md-5">
+
+                                        <div><span class="ct-fw-600"><h5>{{ form_label(form.dateDebutEvenement) }}</h5></span>
+                                            <div>
+                                                {{ form_widget(form.dateDebutEvenement,  { 'attr': {'placeholder': 'DD/MM/YYYY'} }) }}
+                                                {{ form_widget(form.heureDebutEvenement,  { 'attr': {'placeholder': 'H:M:S'} }) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div><span class="ct-fw-600"><h5>{{ form_label(form.dateFinEvenement) }}</h5></span>
+                                            <div class="col-md-">
+                                                {{ form_widget(form.dateFinEvenement,  { 'attr': {'placeholder': 'DD/MM/YYYY'} }) }}
+                                                {{ form_widget(form.heureFinEvenement,  { 'attr': {'placeholder': 'H:M:S'} }) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12"><br>
+                                <div><span class="ct-fw-600"><h3><i class="fa fa-map-marker"> Où ?</i></h3></span></div><br>
+                                <div class="row">
+                                    <div class="col-md-4">
+
+                                        <div><span class="ct-fw-600"><h5>{{ form_label(form.lieuEvenement) }}</h5></span>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-map-marker">
+                                                    </i>
+                                                </div>
+                                                {{ form_widget(form.lieuEvenement,  { 'attr': {'placeholder': 'Lieu','class': 'form-control input--withBorder ct-u-marginBottom10 input-focusMotive' } }) }}
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div><span class="ct-fw-600"><h5>{{ form_label(form.ville) }}</h5></span>
+
+                                            {{ form_widget(form.ville,  { 'attr': {'placeholder': 'Titre','class': 'form-control input--withBorder ct-u-marginBottom10 input-focusMotive' }}) }}
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div><span class="ct-fw-600" ><h5>{{ form_label(form.file) }}</h5></span>
+                                            <div>
+                                                {{ form_widget(form.file,  { 'attr': {'placeholder': 'image' ,'multiple': 'multiple', 'class': 'form-control input--withBorder ct-u-marginBottom10 input-focusMotive' }} ) }}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+
+                            </div>
+
+                            <div class="col-md-12"><br>
+                                <div><span class="ct-fw-600"><h5>{{ form_label(form.descriptionEvenement) }}</h5></span>
+                                    <div>
+
+                                        {{ form_widget(form.descriptionEvenement) }}<br>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+
+
+                            <div class="col-md-12">
+                                <div><span class="ct-fw-600"><h3><i class="fa fa-ticket">billets</i></h3></span></div><br>
+                                <div class="col-md-3">
+
+                                    {{ form_widget(form) }}
+                                </div></div>
+                            <div class="col-md-12">
+                                <div class="ct-divider--greyBig ct-u-marginBoth40"></div>
+
+
+                                <div style='text-align:right'>
+                                    <button type="submit" id="submit-event" class="btn btn-primary btn-lg text-uppercase ct-u-marginTop20">Ajouter</button>
+                                    <button type="reset" class="btn btn-primary btn-lg text-uppercase ct-u-marginTop20">Annuler</button>
+                                </div></div></div>
+                    </form>
+                </div>
+            </div>
+        </div></div>
+
+
+{% endblock body %}

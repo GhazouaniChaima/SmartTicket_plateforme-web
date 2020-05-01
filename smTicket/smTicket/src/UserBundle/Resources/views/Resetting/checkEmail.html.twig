@@ -1,0 +1,14 @@
+{% extends "::layout_interne.html.twig" %}
+
+{% block body %}
+<section class="ct-u-paddingTop60 ct-u-paddingBottom90">
+    <div class="container">
+        <div class="row">
+            <div class="text-center">
+                <div class="col-md-12 text-center">
+                    <div class="ct-textBox ct-u-backgroundGrey">
+<h6>
+{{ 'resetting.check_email'|trans({'%email%': email}, 'FOSUserBundle') }}
+</h6>
+                    </div></div></div></div></div></section>
+{% endblock %}

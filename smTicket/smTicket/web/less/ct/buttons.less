@@ -1,0 +1,165 @@
+
+.button-variant(@background; @border) {
+  color: #ffffff;
+  background-color: @background;
+  border-color: @border;
+}
+
+button{
+  outline: none;
+}
+
+.btn{
+  padding: 6px 19px;
+  font-size: 12px;
+  line-height: 24px;
+  font-weight: 700;
+  .ct-m-rounded(5px);
+  border-width: 1px;
+  .ct-m-transition(all, 0.3s, ease);
+}
+
+.btn{
+  margin-right: 30px;
+  &:last-of-type{
+    margin-right: 0;
+  }
+}
+
+.btn-default{
+  .button-variant(#fff,#fff);
+}
+
+.btn-primary{
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active{
+    background-color: #2d2d2d;
+    border-color: #2d2d2d;
+  }
+}
+
+.btn-primaryDark{
+  color: #3b4045;
+  &:hover,
+  &:focus,
+  &:active,
+  &.active{
+    background-color: #353535;
+    border-color: #353535;
+    color: #fff;
+  }
+}
+
+.btn-grey{
+  background-color: #f0f0f0;
+  color: #4b4a4a;
+}
+
+.btn-success{
+  .button-variant(#c9cf4a, #c9cf4a);
+  color: #2d2d2d;
+}
+
+.btn-info{
+  .button-variant(#5bc0de, #5bc0de);
+}
+
+.btn-warning{
+  .button-variant(#e39110, #e39110);
+}
+
+.btn-danger{
+  .button-variant(#d24963, #d24963);
+}
+
+.btn-dark{
+  .button-variant(#2d2d2d, #2d2d2d);
+}
+
+.btn-link{
+  color: #e30000;
+  &:hover{
+    color: inherit;
+  }
+}
+
+.btn-toTop{
+  font-size: 32px;
+  position: absolute;
+  bottom: 15px;
+  right: 0;
+}
+
+.btn-loadMore{
+  font-size: 19px;
+  line-height: 24px;
+  border: 1px solid #dde2d7;
+  background-color: #fff;
+  &:hover,
+  &:focus,
+  &:active,
+  &.active{
+    background-color: #2d2d2d;
+    border-color: #2d2d2d;
+    color: #fff;
+  }
+}
+
+.btn.btn-transparent{
+  background: transparent;
+  color: #fff;
+}
+
+.btn-bordered--dark{
+  border-color: #2d2d2d;
+  color: #2d2d2d;
+}
+
+.btn-bordered--Light{
+  border-color: #fff;
+  color: #fff;
+}
+
+.btn.active{
+  &:hover,
+  &:focus,
+  &:active,
+  &.active{
+    .ct-m-boxShadow(none);
+  }
+}
+
+.btn-lg{
+  padding: 14px 42px;
+}
+
+.btn-sm{
+  padding: 2px 18px;
+}
+
+.btn-xs{
+  font-size: 12px;
+  line-height: 10px;
+  padding: 7px 16px;
+}
+
+.btn-long{
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.btn-group{
+  .btn{
+    margin-right: 0;
+  }
+}
+
+.btn-fullWidth{
+  display: block;
+  margin-right: 0;
+  margin-left: 0;
+}
+

@@ -1,0 +1,122 @@
+{% extends "::layout_interne.html.twig" %}
+{% block body %}
+<header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{asset('images/many.jpg')}}" data-background-mobile="{{asset('images/many.jpg')}}" class="ct-mediaSection">
+    <div class="ct-breadcrumbs">
+        <ul class="list-inline list-unstyled">
+            <li><a href="{{ path('accueil')}}"><i class="fa fa-home"></i></a></li><li><a href="{{ path('profil')}}"><i class="fa fa-angle-right"></i>Tableau De Bord</a><i class="fa fa-angle-right"></i>Liste Des événements</li>
+
+        </ul>
+    </div>
+</header>
+
+    {% if event|length < 1 %}
+
+
+    <section class="ct-u-paddingTop60 ct-u-paddingBottom90">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="ct-textBox ct-u-backgroundGrey">
+                        <a  href="{{ path('ajouterEvenementEtCatBillet')}}" class="btn btn-grey btn-lg text-uppercase"><i class="fa fa-plus-circle"> Créer un événement</i></a><br><br>
+                        <div class="text-center">
+                            <h2><center>liste des événements est vide</center></h2></div>
+
+                    </div></div></div></div></section>
+
+    {% else%}
+
+        <section class="ct-u-paddingBoth90">
+
+        <div class="container">
+            <a  href="{{ path('ajouterEvenementEtCatBillet')}}" class="btn btn-grey btn-lg text-uppercase"><i class="fa fa-plus-circle"> Créer un événement</i></a><br><br>
+    {%  for e in event %}
+            <div class="ct-mediaBox ct-mediaBox--inline ct-mediaBox--grey ct-u-marginBottom50">
+                <div class="ct-mediaBox-mediaContainer"><img style="width: 570px;height: 400px;" src="{{ asset('uploads/'~e.path) }}">
+                </div>
+                <div class="ct-mediaBox-description">
+                    <h4 class="ct-u-marginBottom20 ct-fw-300 text-capitalize">{{ e.titreEvenement }} <div data-rating="{{ e.noteGlobale }}" class="starrr"></div></h4>
+                    <div style='text-align:right' class="ct-productBox-departure"><span class="ct-u-colorMotive"><i class="fa fa-map-marker"></i></span><span>{{ e.ville }}  {{ e.lieuEvenement }}</span></div>
+                    <h5 class="ct-u-marginBottom20 ct-fw-300 text-capitalize">{{ e.categorie.libelleCategorie }}</h5>
+
+
+                    <div class="ct-productBox-Meta">
+                        <div class="ct-productBox-deliveryInformation ">
+                            <div class="ct-productBox-date"><span class="ct-u-colorMotive"><i class="fa fa-calendar"></i> début</span><span>{{ e.dateDebutEvenement|date('d/m/y') }} à {{ e.heureDebutEvenement|date('H:i:s') }}</span></div>
+                            <div class="ct-productBox-departure"><span class="ct-u-colorMotive"><i class="fa fa-calendar"></i> fin</span><span>{{ e.dateFinEvenement|date('d/m/y') }} à {{ e.heureFinEvenement|date('H:i:s') }}</span></div>
+                        </div>
+
+                    </div>
+
+                    <p>{{ e.descriptionEvenement|slice(0, 50)|raw }}...<a  href="#infos1{{loop.index}}" data-toggle="modal"  class="btn btn-link" >voir plus</a> </p>
+                    <div class="ct-productBox-departure"><span class="ct-u-colorMotive">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-bar-chart"></i></span><span class="badge"> {{ e.vues }}</span> Vues</div><br>
+
+                    <div class="ct-productBox ct-productBox--moreInfo  ct-productBox--grey ">
+        {%  for c in e.getClassebillets %}
+                        <div class="ct-productBox-Meta">
+                            <div class="ct-productBox-deliveryInformation ">
+                                <div class="ct-productBox-date"><span>{{ c.classe }}</span></div>
+                                <div class="ct-productBox-departure"><span>{{ c.tarif }} DNT</span></div>
+                                <div class="ct-productBox-departure"><span>{{ c.qntbillet }} Billets</span></div>
+                                <div class="ct-productBox-departure"><span>{{ c.qntStock }} Billets disponibles</span></div>
+                            </div>
+                        </div>
+            {% endfor %}
+
+                    </div>
+                    <a data-toggle="modal" href="#infos{{loop.index}}" class="btn btn-grey btn-lg text-uppercase"><i class="fa fa-trash-o"></i></a><a href="{{ path('modifierEvenementClient',{'id':e.id})}}" class="btn btn-grey btn-lg text-uppercase"><i class="fa fa-pencil"></i></a>
+
+                    <div class="modal fade" id="infos{{loop.index}}">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">x</button>
+                                    <h4 class="modal-title">Confirmation</h4>
+                                </div>
+                                <div class="modal-body">
+                                    Etes-vous sûr de vouloir supprimer ce Evenement !
+                                </div>
+                                <div class="modal-footer">
+                                    <a class="btn btn-default btn-xs" href="{{path("supprimerEvenementClient", { id: e.id})}}" >OUI</a>
+                                    <button class="btn btn-info" data-dismiss="modal">NON</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if e.status == "1"  %}
+                        <div class="text-right">Confirmer</div>
+                    {% elseif e.status == "0" %}
+                        <div class="text-right">Réfuser</div>
+                    {% elseif e.status == "" %}
+                        <div class="text-right">En attente</div>
+
+                    {% endif %}
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+        <div class="modal fade" id="infos1{{loop.index}}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                        <h4 class="modal-title">Description d'événement</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <p> {{ e.descriptionEvenement|raw }}</p>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+        {% endif %}
+        </div>
+        <div class="text-center">  {{ knp_pagination_render(event) }} </div>
+    </section>
+{% endblock body %}

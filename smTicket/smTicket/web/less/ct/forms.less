@@ -1,0 +1,353 @@
+
+.successMessage, .errorMessage{
+  display: none;
+}
+
+.form-control{
+  border-color: #fff;
+  .ct-m-boxShadow(none);
+  height: 43px;
+  &:focus{
+    box-shadow: none;
+    border-color: #fff;
+  }
+}
+
+.input-lg{
+  height: 52px;
+}
+
+.input-sm{
+  height: 32px;
+}
+
+input{
+  .ct-m-rounded(5px 0 0 5px);
+  background-color: #fff;
+  padding-right: 15px;
+}
+
+.ct-form{
+  input, textarea{
+    .ct-m-rounded(0);
+  }
+  div[class^="col-"]{
+    padding-right: 5px;
+    &:last-child{
+      padding-right: 15px;
+      padding-left: 5px;
+    }
+  }
+}
+
+.ct-form-grey{
+  input, textarea{
+    background-color: #f5f5f5;
+    border-color: #f5f5f5;
+    color: #979797;
+    &::-webkit-input-placeholder {
+      color: #979797;
+    }
+    &:-moz-placeholder {
+      color: #979797;
+    }
+    &::-moz-placeholder {
+      color: #979797;
+    }
+    &:-ms-input-placeholder {
+      color: #979797;
+    }
+  }
+  input{
+    height: 37px;
+  }
+  .beatpicker-input{
+    height: 34px;
+    width: 45%;
+    padding: 0 20px;
+    font-size: 12px;
+  }
+}
+
+.beatpicker-input{
+  .ct-m-rounded(0);
+  .ct-m-boxShadow(none);
+  border-width: 0;
+  background-image: none!important;
+}
+
+.beatpicker li.cell{
+  width: 12%;
+}
+.beatpicker-input-from{
+  float: left;
+}
+.beatpicker-input-to{
+  float: right;
+}
+.beatpicker-clearButton{
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 12px;
+  line-height: 15px;
+  padding: 0 10px;
+  border: none;
+  color: #fff;
+  .ct-m-rounded(5px);
+  .ct-m-transition(all, 0.2s, ease);
+  &:hover{
+    background-color: #333;
+  }
+}
+
+.input-parent{
+  &:before, &:after{
+    content: "";
+    display: table;
+  }
+  &:after{
+    clear: both;
+  }
+}
+
+.ct-form-rounded{
+  input, textarea{
+    font-size: 14px;
+    color: #bbbbbb;
+    .ct-m-rounded(5px);
+    &::-webkit-input-placeholder {
+      color: #bbbbbb;
+    }
+    &:-moz-placeholder {
+      color: #bbbbbb;
+    }
+    &::-moz-placeholder {
+      color: #bbbbbb;
+    }
+    &:-ms-input-placeholder {
+      color: #bbbbbb;
+    }
+  }
+}
+
+.input--withBorder{
+  border: 1px solid #dbdbdb;
+}
+
+
+.input--withIcon{
+  position: relative;
+  .input-icon{
+    font-size: 16px;
+    text-align: center;
+    height: 32px;
+    width: 32px;
+    padding: 4px;
+    background-color: #e2e2e2;
+    position: absolute;
+    color: #fff;
+    left: 10px;
+    top: 50%;
+    margin-top: -16px;
+    .ct-m-rounded(50%);
+    z-index: @z-index-1;
+  }
+  input{
+    padding-left: 52px;
+  }
+}
+
+.input--rounded{
+  .ct-m-rounded(20px);
+  background-color: #f5f5f5;
+  border-color: #f5f5f5;
+}
+
+.input-group-btn{
+  button{
+    min-width: 130px;
+  }
+  .btn-default{
+    padding-top: 13px;
+    padding-bottom: 13px;
+    &:hover{
+      border: 1px solid #fff;
+    }
+  }
+}
+
+form{
+  .input-group{
+    width: 100%;
+  }
+  .input-item{
+    width: 100%;
+    display: table;
+    margin-bottom: 20px;
+    span{
+      display: table-cell;
+      vertical-align: middle;
+      padding-right: 15px;
+      width: 110px;
+      text-transform: capitalize;
+    }
+  }
+}
+
+.form-group--search{
+  position: relative;
+  .form-control{
+    height: 41px;
+    padding-left: 20px;
+    padding-right: 40px;
+  }
+  button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 39px;
+    width: 54px;
+    background-color: transparent;
+    border: none;
+    .ct-m-boxShadow(none);
+    color: #bcbcbc;
+  }
+}
+
+/* Custom Checbox */
+
+.ct-checbox--custom {
+  input[type=checkbox] {
+    display: none;
+  }
+  label {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    font-size: 12px;
+    line-height: 24px;
+    margin-bottom: 0;
+    padding: 8px 22px 8px 44px;
+    &:after{
+      content: "";
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin-top: -6px;
+      margin-right: 10px;
+      position: absolute;
+      top: 50%;
+      left: 22px;
+      .ct-m-rounded(50%);
+      z-index: 1;
+    }
+  }
+  input[type=checkbox]:checked + label:before {
+    content: "";
+    background-color: transparent;
+    position: absolute;
+    left: 26px;
+    top: 16px;
+    width: 4px;
+    height: 7px;
+    transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    z-index: 2;
+  }
+  input[type=checkbox]:checked + label:after {
+    background-color: #fff;
+  }
+  input[type=checkbox]:checked + label{
+    color: #fff;
+  }
+}
+
+.ct-checbox--custom.ct-checbox--customType2{
+  display: inline-block;
+  margin-right: 10px;
+  label{
+    display: inline-block;
+    padding: 0;
+    height: 38px;
+    width: 38px;
+    .ct-m-rounded(5px);
+    &:after{
+      height: 38px;
+      width: 38px;
+      .ct-m-rounded(5px);
+      top: 0;
+      left: 0;
+      margin: 0;
+    }
+  }
+  input[type=checkbox]:checked + label:before {
+    content: "";
+    background-color: transparent;
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    width: 21px;
+    height: 21px;
+    border: none;
+    transform: rotate(0);
+    -o-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -webkit-transform: rotate(0);
+    z-index: 2;
+    background: url("../images/check-icon-white.png");
+  }
+  input[type=checkbox]:checked + label:after {
+    background-color: inherit;
+  }
+}
+
+.ct-m-checkbox(@color: @dgreen){
+  label{
+    &:after{
+      background-color: @color;
+      border-color: @color;
+    }
+  }
+  input[type=checkbox]:checked + label{
+    background-color: @color;
+  }
+}
+
+.ct-checbox--customType2.ct-checkbox-darkgreen{
+  .ct-m-checkbox(@dgreen)
+}
+.ct-checbox--customType2.ct-checkbox-pink{
+  .ct-m-checkbox(@pink)
+}
+.ct-checbox--customType2.ct-checkbox-purple{
+  .ct-m-checkbox(@purple)
+}
+.ct-checbox--customType2.ct-checkbox-lightgreen{
+  .ct-m-checkbox(@lgreen)
+}
+.ct-checbox--customType2.ct-checkbox-red{
+  .ct-m-checkbox(@red)
+}
+.ct-checbox--customType2.ct-checkbox-orange{
+  .ct-m-checkbox(@orange)
+}
+.ct-checbox--customType2.ct-checkbox-yellow{
+  .ct-m-checkbox(@yellow)
+}
+.ct-checbox--customType2.ct-checkbox-brown{
+  .ct-m-checkbox(@brown)
+}
+.ct-checbox--customType2.ct-checkbox-lightblue{
+  .ct-m-checkbox(@lblue)
+}
+
+@media(max-width: @screen-xs){
+ .input-group-btn{
+   .btn{
+     margin-bottom: 0;
+   }
+ }
+}

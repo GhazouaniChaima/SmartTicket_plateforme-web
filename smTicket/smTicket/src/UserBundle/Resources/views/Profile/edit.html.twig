@@ -1,0 +1,63 @@
+{% extends "::layout_interne.html.twig" %}
+{% block body %}
+<header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{asset('images/many.jpg')}}" data-background-mobile="{{asset('images/many.jpg')}}" class="ct-mediaSection">
+    <div class="ct-breadcrumbs">
+        <ul class="list-inline list-unstyled">
+            <li><a href="{{ path('accueil')}}"><i class="fa fa-home"></i></a></li><li><a href="{{ path('profil')}}"><i class="fa fa-angle-right"></i>Tableau De Bord</a><a href="{{ path('consulterEvenementClient')}}"><i class="fa fa-angle-right"></i>Mon Profil</a><i class="fa fa-angle-right"></i>Details Compte</li>
+
+        </ul>
+    </div>
+</header>
+
+<section class="ct-u-paddingTop60 ct-u-paddingBottom90">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="ct-textBox ct-u-backgroundGrey">
+                    <div class="text-center">
+                        <h4 class="ct-u-colorMotive text-uppercase ct-fw-700 ct-u-marginBottom50">Mon Compte</h4></div>
+
+                        <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+                            <div class="ct-textBox-inner ct-u-marginBottom30">
+                                {{ form_widget(form) }}</div>
+                            <div class="text-right">
+                                <input class="btn btn-xs btn-primary text-uppercase" type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
+                            </div>
+                        </form>
+
+
+                </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <div class="ct-textBox ct-u-backgroundGrey">
+                <h6 class="ct-u-colorMotive text-uppercase ct-fw-700 ct-u-marginBottom30">POURQUOI CRÉER UN COMPTE?</h6>
+                <ul class="list-inline list-unstyled ct-u-marginBottom40 text-left ct-list--moreSpace">
+                    <li><i class="fa fa-long-arrow-right ct-u-colorMotive"></i>SmartTicket est également la 1re billetterie en ligne sécurisée et compatible tout support : mobile, tablette et ordinateur</li>
+                    <li><i class="fa fa-long-arrow-right ct-u-colorMotive"></i>Réservez des billetteries en ligne rapidement et facilement</li>
+                    <li><i class="fa fa-long-arrow-right ct-u-colorMotive"></i>La solution performante pour vos billets</li>
+                    <li><i class="fa fa-long-arrow-right ct-u-colorMotive"></i>Vous pouvez suivre en temps réel vos ventes sur le site et accéder à des informations statistiques. Il est également possible de recevoir par e-mail une copie des billets vendus</li>
+                    <li><i class="fa fa-long-arrow-right ct-u-colorMotive"></i>Vous pouvez ajouter autant de types de billets que vous souhaitez. Il suffit de leur donner prix de chaque classe.
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock body %}

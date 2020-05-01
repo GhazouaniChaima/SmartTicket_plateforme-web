@@ -1,0 +1,235 @@
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{
+//  line-height: 43px;
+  margin: 0;
+}
+small{
+  display: block;
+}
+h1, .h1{
+  font-size: @h1;
+}
+h2, .h2{
+  font-size: @h2;
+}
+h3, .h3{
+  font-size: @h3;
+}
+h4, .h4{
+  font-size: @h4;
+}
+h5, .h5{
+  font-size: @h5;
+}
+h6, .h6{
+  font-size: @h6;
+}
+h5, .h5{
+  small{
+    font-size: 16px;
+  }
+}
+h6, .h6{
+  small{
+    font-size: 12px;
+  }
+}
+
+@media(max-width: @screen-xs){
+  h1{
+    font-size: 50px;
+  }
+}
+
+a{
+  .ct-m-transition(all, 0.2s, ease);
+  &:hover, &:focus, &:active{
+    text-decoration: none;
+  }
+}
+
+p{
+  font-size: 15px; //16
+  line-height: 26px;
+  margin: 0;
+}
+
+body{
+  font-family: @font-family-sans-serif;
+  color: #4b4a4a;
+}
+
+ul{
+  margin: 0;
+}
+
+.ct-textDecoration--underline{
+  position: relative;
+  &:after{
+    content: "";
+    height: 3px;
+    width: 88px;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    background-color: #fff;
+  }
+}
+
+header{
+  span{
+    display: block;
+  }
+  p{
+    line-height: 30px;
+  }
+}
+
+//List
+
+.ct-list--WithIcons{
+  li{
+    position: relative;
+    padding: 10px 0 10px 34px;
+  }
+  img, i{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -8px;
+  }
+}
+
+.ct-list--circleWithIcons{
+  li{
+    position: relative;
+    font-size: 15px;
+    line-height: 26px;
+    padding: 9px 0 9px 45px;
+  }
+  .ct-list-iconContainer{
+    font-size: 16px;
+    text-align: center;
+    height: 32px;
+    width: 32px;
+    padding: 3px;
+    position: absolute;
+    color: #fff;
+    left: 0;
+    top: 8px;
+    .ct-m-rounded(50%);
+  }
+}
+
+
+.ct-list--circleWithIconsTransparent{
+
+  h6, .h6{
+    font-size: 15px;
+  }
+  li{
+    padding-left: 65px;
+    position: relative;
+    margin-bottom: 40px;
+  }
+  .ct-icon-container{
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    left: 0;
+    top: -18px;
+    .ct-m-rounded(50%);
+    text-align: center;
+    font-size: 24px;
+    padding: 6px 11px;
+  }
+  p{
+    font-size: 14px;
+    line-height: 26px;
+  }
+}
+
+.ct-list--circleWithIcons-bordered{
+  font-size: 12px;
+  color: #2d3e52;
+  li{
+    padding: 13px 0 13px 45px;
+    border-bottom: 1px solid #f1f1f1;
+    line-height: 16px;
+    &:last-child{
+      border-bottom: none;
+    }
+  }
+  .ct-list-iconContainer{
+    font-size: 12px;
+    height: 30px;
+    width: 30px;
+    left: 0;
+    top: 17px;
+    line-height: 24px;
+  }
+  p, a{
+    color: #838383;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+.ct-list--iconsTop{
+  li{
+    position: relative;
+    padding: 0 0 0 23px;
+    margin-bottom: 30px;
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+  i{
+    position: absolute;
+    left: 0;
+    top: 7px;
+    font-size: 16px;
+  }
+  span, small{
+    line-height: 30px;
+  }
+  small{
+    font-weight: 700;
+  }
+}
+
+.ct-list--check{
+  .ct-icon-container{
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  h1,h2,h3,h4,h5,h6{
+    line-height: 30px;
+  }
+  h4, .h4{
+    font-size: 24px;
+  }
+  li{
+    position: relative;
+    padding-left: 69px;
+    margin-bottom: 50px;
+  }
+  p{
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 600;
+  }
+}
+
+.ct-list--moreSpace{
+  font-size: 14px;
+  line-height: 23px;
+  font-weight: 600;
+  li{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  i{
+    margin-right: 15px;
+  }
+}

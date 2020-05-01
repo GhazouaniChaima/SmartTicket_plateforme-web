@@ -1,0 +1,402 @@
+<?php
+
+
+
+namespace UserBundle\Entity;
+use FOS\UserBundle\Entity\User as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+/**
+ * @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
+ * @ORM\Table(name="fos_user")
+ */
+class User extends BaseUser {
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+   
+
+    
+    
+    public function __construct() {
+        parent::__construct();
+        // your own logic
+    }
+
+
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=255, nullable=true)
+     */
+    private $prenom;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=255, nullable=true)
+     */
+    private $adresse;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dateCreationCompte", type="datetime", nullable=true)
+     */
+    private $dateCreationCompte;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tel", type="integer", nullable=true)
+     */
+    private $tel;
+
+
+
+
+    /**
+     * @var profilImgURL
+     *
+     * @ORM\Column(name="profilImgURL", type="string", length=255, nullable=true)
+     */
+    private $profilImgURL="images/add-user.png";
+
+    /**
+     * @Assert\File(maxSize="600000000000000")
+     */
+    private $file;
+
+    public function getAbsolutePath()
+    {
+        return null === $this->profilImgURL
+            ? null
+            : $this->getUploadRootDir().'/'.$this->profilImgURL;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->profilImgURL
+            ? null
+            : $this->getUploadDir().'/'.$this->profilImgURL;
+    }
+
+    protected function getUploadRootDir()
+    {
+
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+
+        return 'images/';
+    }
+
+    public function upload()
+    {
+
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        $this->getFile()->move(
+            $this->getUploadRootDir(),
+            $this->getFile()->getClientOriginalName()
+        );
+
+
+        $this->path = $this->getFile()->getClientOriginalName();
+
+
+        $this->file = null;
+    }
+
+
+
+
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Commentaire", mappedBy="usercoment", cascade={"remove"})
+     */
+    private $commentaires;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="ClientBundle\Entity\temoignage", mappedBy="usertemg", cascade={"remove"})
+     */
+    private $temoignages;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\Evenement",cascade={"remove"}, mappedBy="user")
+     */
+    private $Evenements;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\Evenement",cascade={"remove"}, mappedBy="usercomd")
+     */
+    private $commande;
+
+
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Add Evenements
+     *
+     * @param \AdminBundle\Entity\Evenement $evenements
+     * @return User
+     */
+    public function addEvenement(\AdminBundle\Entity\Evenement $evenements)
+    {
+        $this->Evenements[] = $evenements;
+
+        return $this;
+    }
+
+    /**
+     * Remove Evenements
+     *
+     * @param \AdminBundle\Entity\Evenement $evenements
+     */
+    public function removeEvenement(\AdminBundle\Entity\Evenement $evenements)
+    {
+        $this->Evenements->removeElement($evenements);
+    }
+
+    /**
+     * Get Evenements
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEvenements()
+    {
+        return $this->Evenements;
+    }
+
+
+
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     * @return User
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string 
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     * @return User
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string 
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set dateCreationCompte
+     *
+     * @param \DateTime $dateCreationCompte
+     * @return User
+     */
+    public function setDateCreationCompte($dateCreationCompte)
+    {
+        $this->dateCreationCompte = $dateCreationCompte;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreationCompte
+     *
+     * @return \DateTime 
+     */
+    public function getDateCreationCompte()
+    {
+        return $this->dateCreationCompte;
+    }
+
+    /**
+     * Set tel
+     *
+     * @param integer $tel
+     * @return User
+     */
+    public function setTel($tel)
+    {
+        $this->tel = $tel;
+
+        return $this;
+    }
+
+    /**
+     * Get tel
+     *
+     * @return integer 
+     */
+    public function getTel()
+    {
+        return $this->tel;
+    }
+
+    /**
+     * Set profilImgURL
+     *
+     * @param string $profilImgURL
+     *
+     * @return User
+     */
+    public function setProfilImgURL($profilImgURL)
+    {
+        $this->profilImgURL = $profilImgURL;
+
+        return $this;
+    }
+
+    /**
+     * Get profilImgURL
+     *
+     * @return string
+     */
+    public function getProfilImgURL()
+    {
+        return $this->profilImgURL;
+    }
+
+    /**
+     * Add commentaire
+     *
+     * @param \AppBundle\Entity\Commentaire $commentaire
+     *
+     * @return User
+     */
+    public function addCommentaire(\AppBundle\Entity\Commentaire $commentaire)
+    {
+        $this->commentaires[] = $commentaire;
+
+        return $this;
+    }
+
+    /**
+     * Remove commentaire
+     *
+     * @param \AppBundle\Entity\Commentaire $commentaire
+     */
+    public function removeCommentaire(\AppBundle\Entity\Commentaire $commentaire)
+    {
+        $this->commentaires->removeElement($commentaire);
+    }
+
+    /**
+     * Get commentaires
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommentaires()
+    {
+        return $this->commentaires;
+    }
+
+    /**
+     * Add temoignage
+     *
+     * @param \ClientBundle\Entity\temoignage $temoignage
+     *
+     * @return User
+     */
+    public function addTemoignage(\ClientBundle\Entity\temoignage $temoignage)
+    {
+        $this->temoignages[] = $temoignage;
+
+        return $this;
+    }
+
+    /**
+     * Remove temoignage
+     *
+     * @param \ClientBundle\Entity\temoignage $temoignage
+     */
+    public function removeTemoignage(\ClientBundle\Entity\temoignage $temoignage)
+    {
+        $this->temoignages->removeElement($temoignage);
+    }
+
+    /**
+     * Get temoignages
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTemoignages()
+    {
+        return $this->temoignages;
+    }
+
+    /**
+     * Sets file.
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * Get file.
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+
+}

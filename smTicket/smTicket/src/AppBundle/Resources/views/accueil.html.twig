@@ -1,0 +1,420 @@
+{% extends "::layout_interne.html.twig" %}
+{% block body %}
+    <header id="home" class="ct-u-colorWhite text-left" xmlns:width="http://www.w3.org/1999/xhtml"
+            xmlns:width="http://www.w3.org/1999/xhtml">
+        <div data-adaptiveHeight="true" data-animations="true" data-autoplay="true" data-infinite="true" data-autoplaySpeed="6000" data-draggable="true"  data-touchMove="false" data-arrows="true" data-items="1" class="ct-slick ct-js-slick">
+                {%  for e in evenement %}
+                    <div data-bg="{{ asset('uploads/'~e.path) }}"  class="item">
+                        <div class="ct-slick-inner">
+                            <div class="ct-slick-content">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <h1 class="ct-textDecoration--underline ct-u-marginBottom60 ct-fw-300"><span class="ct-u-text-big text-uppercase">new</span>{{ e.titreEvenement }}</h1>
+                                            <p class="ct-u-marginBottom50"></p><a href="{{ path('vuEvenement',{id:e.id})}}" class="btn btn-lg btn-default btn-transparent text-uppercase ct-js-btnScroll">plus de détails</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+        </div>
+    </header>
+    <!----------------------------------------------------------------------------------------->       
+    <section class="ct-u-paddingTop70 ct-u-paddingBottom90">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="ct-heading--withBorder ct-heading--withBorderGrey ct-u-marginBottom40">
+                        <br>
+                        <h3 class="ct-u-colorMotive text-uppercase ct-u-marginBottom10 ct-fw-700">à l'affiche</h3>
+                    </div>
+                </div>
+
+
+
+                {#<div class="col-sm-3">
+                     <div class="form-group form-group--search">
+
+                         <form method="GET" action="{{ path('listeDesEvenement') }}">
+                             <input id="search2" required type="text" name="Keyword" class="form-control input--rounded" placeholder="mot clé"  value="{{Keyword}}">
+                             <button type="submit" ><i class="fa fa-search" ></i></button>
+                         </form>
+
+                     </div>
+                 </div>#}
+
+
+
+            </div>
+
+
+
+            <div data-adaptiveHeight="true" data-animations="true" data-autoplay="true" data-infinite="true" data-autoplaySpeed="6000" data-draggable="true" data-touchMove="false" data-arrows="true" data-items="1" class="ct-slick ct-js-slick ct-slick--arrowsTop">
+                <div class="item">
+                    <div class="ct-slick-inner">
+                        <div class="ct-slick-content">
+
+                            <div class="row">
+                                {% if evenement|length < 1 %}
+                                <div class="ct-textBox ct-u-backgroundGrey">
+
+                                    <h2><center>liste des événements est vide</center></h2>
+                                    <br></div></div>
+                            {% else%}
+                                    {%  for e in evenement %}
+                                        <div class="col-md-6">
+                                            <div class="ct-productBox ct-productBox--moreInfo ct-u-marginBottom50 ct-productBox--grey  ct-u-marginBoth50">
+                                                <div class="ct-productBox-image">
+                                                    <div class="ct-productBox-imageContainer"><a href="#"><img style="width: 275px;height: 229px;" src="{{ asset('uploads/'~e.path) }}" alt="Product"></a></div>
+                                                    <div class="ct-productBox-departure"><span class="ct-u-colorMotive">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-bar-chart"></i></span><span class="badge"> {{ e.Vues }}</span> Vues</div>
+
+                                                </div>
+                                                <div class="ct-productBox-Description">
+                                                    <div class="ct-productBox-DescriptionInner"> <a href="#">
+                                                            <h5 class="text-capitalize ct-u-marginBottom10 ct-fw-700">{{ e.titreEvenement }}</h5></a>
+                                                        <div data-rating="{{ e.noteGlobale }}" class="starrr"></div>
+                                                        <div style='text-align:right' class="ct-productBox-departure"><span class="ct-u-colorMotive"><i class="fa fa-map-marker"></i></span><span>{{ e.lieuEvenement }}</span></div>
+
+                                                    </div>
+                                                    <div class="ct-productBox-Meta">
+                                                        <div class="ct-productBox-deliveryInformation text-uppercase">
+                                                            <div class="ct-productBox-date"><span class="ct-u-colorMotive"><i class="fa fa-calendar"></i>début</span><span>{{ e.dateDebutEvenement|date('d/m/y') }} à {{ e.heureDebutEvenement|date('H:i') }}</span></div>
+                                                            <div class="ct-productBox-departure"><span class="ct-u-colorMotive"><i class="fa fa-calendar"></i>fin</span><span>{{ e.dateFinEvenement|date('d/m/y') }} à {{ e.heureFinEvenement|date('H:i') }}</span></div>
+                                                        </div>
+                                                        <div class="ct-productBox-price">
+
+                                                            <a href="#"> <h5 class="text-capitalize ct-u-marginBottom10 ct-fw-700">{{ e.minPrice }}DNT</h5></a>
+                                                            <div class="ct-productBox-right"><a href="{{ path('vuEvenement',{id:e.id})}}" class="btn btn-xs btn-primary text-uppercase">plus de détails</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                            {% endif %}
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="ct-heading--withArrow ct-u-colorWhite">
+                <h6 class="text-uppercase">Top private tours</h6>
+            </div>
+
+
+            <div data-adaptiveHeight="true" data-animations="true" data-autoplay="true" data-infinite="true" data-autoplaySpeed="6000" data-draggable="true" data-touchMove="false" data-arrows="true" data-items="1" class="ct-slick ct-js-slick ct-slick--arrowsTop">
+                <div class="item">
+                    <div class="ct-slick-inner">
+                        <div class="ct-slick-content">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+
+
+    <!----------------------------------------------------------------------------------------->
+    <section id="packages" class="ct-u-paddingTop70 ct-u-paddingBottom90">
+        <div class="container">
+
+            <div class="row">
+
+
+                <div class="col-md-12">
+                    <div class="ct-latest-deals ct-u-marginBottom70">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="text-uppercase ct-title"><span class="pull-left ct-fw-700 ct-u-colorMotive">Villes </span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-9">
+                                <div data-height="96" data-adaptiveHeight="false" data-animations="true" data-autoplay="true" data-infinite="true" data-autoplaySpeed="3000" data-draggable="true" data-touchMove="false" data-arrows="false" data-XSitems="2" data-SMitems="3" data-MDitems="4" data-LGitems="5" data-items="1" class="ct-slick ct-js-slick">
+                                    {%  for ville in villes %}
+                                    <div class="item">
+                                        <div class="ct-slick-inner">
+                                            <div class="ct-slick-content"><a href="{{ path('listeDesEvenement')~"?ville="~ville['ville'] }}"><span class="ct-deal-price">{{ ville['ville'] }}</span></a></div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="col-sm-4">
+                        <div class="ct-iconBox ct-u-marginBottom20"><a href="{{ path('listeDesEvenement') ~ "?categorie=2" }}">
+                                <div class="ct-iconBox-icon"><img src="{{asset('images/camera.png')}}" alt="Cinéma">
+                                </div>
+                                <div class="ct-iconBox-description">
+                                    <h5 class="text-uppercase ct-fw-700 ct-u-colorMotive ct-u-marginBottom20">Cinéma</h5>
+
+                                </div></a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="ct-iconBox ct-u-marginBottom20"><a href="{{ path('listeDesEvenement') ~ "?categorie=4"}}">
+                                <div class="ct-iconBox-icon"><img src="{{asset('images/microphone.png')}}" alt="Musique">
+                                </div>
+                                <div class="ct-iconBox-description">
+                                    <h5 class="text-uppercase ct-fw-700 ct-u-colorMotive ct-u-marginBottom20">Musique</h5>
+
+                                </div></a></div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="ct-iconBox ct-u-marginBottom20"><a href="{{ path('listeDesEvenement') ~ "?categorie=3"}}">
+                                <div class="ct-iconBox-icon"><img src="{{asset('images/theater.png')}}" alt="theater">
+                                </div>
+                                <div class="ct-iconBox-description">
+                                    <h5 class="text-uppercase ct-fw-700 ct-u-colorMotive ct-u-marginBottom20">Théatre</h5>
+
+                                </div></a></div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="col-sm-4">
+                        <div class="ct-iconBox ct-u-marginBottom20"><a href="{{ path('listeDesEvenement') ~ "?categorie=5"}}">
+                                <div class="ct-iconBox-icon"><img src="{{asset('images/lights.png')}}" alt="Fistivals">
+                                </div>
+                                <div class="ct-iconBox-description">
+                                    <h5 class="text-uppercase ct-fw-700 ct-u-colorMotive ct-u-marginBottom20">Fistivals</h5>
+
+                                </div></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="ct-iconBox ct-u-marginBottom20"><a href="{{ path('listeDesEvenement') ~ "?categorie=6"}}">
+                                <div class="ct-iconBox-icon"><img src="{{asset('images/soccert.png')}}" alt="soccert">
+                                </div>
+                                <div class="ct-iconBox-description">
+                                    <h5 class="text-uppercase ct-fw-700 ct-u-colorMotive ct-u-marginBottom20">Sport</h5>
+
+                                </div></a></div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="ct-iconBox ct-u-marginBottom20"><a href="{{ path('listeDesEvenement') ~ "?categorie=7"}}">
+                                <div class="ct-iconBox-icon"><img src="{{asset('images/band.png')}}" alt="concert">
+                                </div>
+                                <div class="ct-iconBox-description">
+                                    <h5 class="text-uppercase ct-fw-700 ct-u-colorMotive ct-u-marginBottom20">Concert</h5>
+
+                                </div></a></div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <section  style="width: 1500px;height: 100px;" id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{asset('images/billetterie.jpg')}}" data-background-mobile="{{asset('images/billetterie.jpg')}}" class="ct-mediaSection">
+        <div class="ct-mediaSection-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="ct-u-paddingBoth200">
+                            <h1 class="text-capitalize ct-u-colorWhite text-center">SmartTicket</h1>
+                            <div data-adaptiveHeight="true" data-animations="true" data-autoplay="true" data-infinite="true" data-autoplaySpeed="6000" data-draggable="true" data-touchMove="false" data-arrows="false" data-items="1" class="ct-slick ct-js-slick ct-u-marginBottom10">
+                                <div class="item">
+                                    <div class="ct-slick-inner">
+                                        <div class="ct-slick-content">
+                                            <div class="ct-testimonials--inline">
+                                                <div class="ct-testimonials-description">
+                                                    <center><i>La solution performante pour vos billets</i></center>
+                                                        <div class="text-right"><p class="ct-u-marginBottom50"></p><a href="{{ path('ajouterEvenementEtCatBillet') }}" class="btn btn-lg btn-default btn-transparent text-uppercase ct-js-btnScroll">Créer une billettrie</a><a href="{{ path('listeDesEvenement') }}" class="btn btn-lg btn-default btn-transparent text-uppercase ct-js-btnScroll">Acheter un billet</a></div>
+
+                                               </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></div></div></div></div></div></div>
+    </section>                            
+
+
+    <section itemscope itemtype="http://schema.org/Blog" class="ct-u-paddingBoth80 ct-blog">
+        <div class="container">
+            <div class="ct-heading--withBorder ct-heading--withBorderGrey ct-u-marginBottom40">
+                <h4 class="ct-u-colorMotive text-uppercase ct-u-marginBottom10">les événements les plus populaires</h4>
+            </div>
+            <div class="row">
+                {% if bestevent|length < 1 %}
+                <div class="ct-textBox ct-u-backgroundGrey">
+
+                    <h2><center>liste des événements est vide</center></h2>
+                    <br></div></div>
+            {% else%}
+                    {%  for e in bestevent %}
+                        <div class="col-sm-6 col-md-3">
+                            <div style="width:270px;height:500px;" class="ct-productBox ct-productBox--moreInfo ct-u-marginBottom50 ct-productBox--grey  ct-u-marginBoth50">
+                                <article  itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" class="ct-article ct-fw-600 ct-article--grey"><a href="{{ path('vuEvenement',{id:e.id})}}" itemprop="url"><img style="width: 262.5px;height: 357px;" src="{{ asset('uploads/'~e.path) }}"  itemprop="image"></a>
+                                    <div class="ct-article-body">
+                                        <div class="ct-article-title"><a href="{{ path('vuEvenement',{id:e.id})}}" itemprop="url"><h5 class="text-uppercase ct-u-colorMotive ct-fw-700">{{ e.titreEvenement|slice(0, 14) }} - {{ e.minPrice }}DNT</h5></a></div>
+                                        <ul class="ct-article-meta list-unstyled list-inline">
+                                            <li itemprop="dateCreated" class="ct-article-date"><i class="fa fa-calendar"></i>{{ e.dateDebutEvenement|date('d/m/y') }} - {{ e.dateFinEvenement|date('d/m/y') }}</li>
+
+
+                                        </ul>
+                                        <div itemprop="text" class="ct-article-description">
+                                            <p>{{ e.descriptionEvenement|slice(0, 80)|raw }}...</p>
+                                        </div>
+
+                                        <ul class="list-unstyled ct-list--iconsTop ct-u-marginBottom50">
+                                            <li><i class="fa fa-bar-chart"></i><span class="h5 ct-fw-700"><small> {{ e.Vues }} Vues</small></span></li></ul>
+                                        <center><a href="{{ path('vuEvenement',{id:e.id})}}" itemprop="url" class="btn-primary btn-xs btn text-uppercase">plus de détails</a></center>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>        
+                    {% endfor %}
+{% endif %}
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+
+
+    <section class="ct-u-paddingBoth90">
+        <div class="container">
+
+            <div data-adaptiveHeight="false" data-animations="true" data-autoplay="true" data-infinite="true" data-autoplaySpeed="3000" data-draggable="true" data-touchMove="false" data-arrows="true" data-XSitems="1" data-SMitems="2" data-MDitems="3" data-LGitems="4" data-items="1" class="ct-slick ct-js-slick ct-slick--arrowsTopBlue text-center">
+
+                    {%  for e in evenement %}
+                        <div class="item">
+                            <div class="ct-slick-inner ct-u-marginBoth50">
+                                <div class="ct-slick-content">
+                                    <div class="ct-image-container--GiftCard">
+                                        <div class="ct-image-container--mainBody"><a href="{{ path('vuEvenement',{id:e.id})}}"><img style="width: 140px;height: 65px;" src="{{ asset('uploads/'~e.path) }}"></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <header id="home" class="ct-u-colorWhite text-left">
+        <div data-adaptiveHeight="true" data-animations="true" data-autoplay="true" data-infinite="true" data-autoplaySpeed="6000" data-draggable="true" data-touchMove="false" data-arrows="true" data-items="1" class="ct-slick ct-js-slick">
+            <div data-bg="{{asset('images/Colour-splash-1.jpg')}}" class="item">
+                <div class="ct-slick-inner">
+                    <div class="ct-slick-content">
+                        <div class="container">
+                            <div class="12">
+
+
+                            <div class="row">
+
+                                <div class="col-md-8 col-md-offset-2 col-lg-offset-0 col-lg-7 ct-u-z-index4">
+                                    <h4 class="text-uppercase">newsletter subscription</h4>
+                                    <div class="ct-divider--doubleBorder ct-u-marginBoth20"></div>
+                                    <p class="ct-u-marginBottom20">Inscrivez-vous à notre newsletter pour recevoir directement sur votre email nos actualités</p>
+                                    <div role="alert" class="successMessage alert alert-success alert-dismissible">
+                                        <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">�</span></button><strong>Success</strong>Congratulation, mission success
+                                    </div>
+                                    <div role="alert" class="errorMessage alert alert-danger alert-dismissible">
+                                        <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">�</span></button><strong>Danger</strong>You did something wrong
+                                    </div>
+                                    <form method="POST" class="validateIt ct-u-marginBottom30"  action="#">
+                                        <div class="input-group input--withIcon"><span class="input-icon"><i class="fa fa-envelope"></i></span>
+                                            <input type="email" required="" name="email" class="form-control input-lg"><span class="input-group-btn">
+                                                <input type="submit" class="btn btn-default btn-transparent text-uppercase" value="Subscribe"></span>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                            <br><br><br>
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1">
+                                    <div class="col-sm-4">
+                                        <div class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big"><a href="#">
+                                                <div class="ct-iconBox-icon"><i class="fa fa-heart"></i>
+                                                </div>
+                                                <div class="ct-iconBox-description">
+                                                    <h4 class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big">Pratique</h4>
+
+                                                </div></a></div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big"><a href="#">
+                                                <div class="ct-iconBox-icon"><i class="fa fa-unlock-alt"></i>
+                                                </div>
+                                                <div class="ct-iconBox-description">
+                                                    <h4 class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big">Sécurité</h4>
+
+                                                </div></a></div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big"><a href="#">
+                                                <div class="ct-iconBox-icon"><i class="fa fa-clock-o"></i>
+                                                </div>
+                                                <div class="ct-iconBox-description">
+                                                    <h4 class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big">Mise en place</h4>
+
+                                                </div></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="row">
+                                    <!--quick info section -->
+                                    <div class="col-lg-4">
+                                        <div class="alert alert-warning text-center">
+                                            <i class="fa fa-calendar fa-3x"></i><br> <h3>{{ eventsCount }}</h3><br><h4>ÉVÉNEMENTS</h4>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="alert alert-warning text-center">
+                                            <i class="fa fa-users fa-3x"></i><br> <h3>{{ usersCount }} </h3><br><h4>UTILISATEURS</h4>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="alert alert-warning text-center">
+                                            <i class="fa fa-ticket fa-3x"></i><br> <h3>{{ CountClasseBillet }} </h3><br><h4>Billets</h4>
+                                        </div>
+                                    </div>
+
+
+
+                                    <!--end quick info section -->
+                                </div>
+                        </div>
+                    </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock body %}
+
+

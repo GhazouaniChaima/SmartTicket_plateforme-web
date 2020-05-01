@@ -1,0 +1,32 @@
+accueil:
+    path:     /
+    defaults: { _controller: AppBundle:Main:accueil }
+    
+listeDesEvenement:
+    path:     /listeDesEvenement
+    defaults: { _controller: AppBundle:Main:listeDesEvenement }
+
+
+
+
+
+contact:
+    path:     /contact
+    defaults: { _controller: AppBundle:Main:contact }
+    
+apropos:
+    path:     /apropos
+    defaults: { _controller: AppBundle:Main:apropos }
+    
+details:
+    path:     /details/{id}
+    defaults: { _controller: AppBundle:Main:details }
+    
+sellticket:
+    path:     /sellticket
+    defaults: { _controller: AppBundle:Main:sellticket }
+    
+    
+
+    
+

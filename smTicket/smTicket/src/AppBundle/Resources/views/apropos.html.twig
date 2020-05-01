@@ -1,0 +1,141 @@
+{% extends "::layout_interne.html.twig" %}
+{% block body %}
+
+    <header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{asset('images/many.jpg')}}" data-background-mobile="{{asset('images/many.jpg')}}" class="ct-mediaSection">
+        <div class="ct-breadcrumbs">
+            <ul class="list-inline list-unstyled text-uppercase">
+                <li><a href="index.html"><i class="fa fa-home"></i></a><i class="fa fa-angle-right"></i>A propos</li>
+            </ul>
+        </div>
+    </header>
+    <section class="ct-u-paddingBoth100">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-9">
+
+                    <div class="ct-squareThumbnail">
+                        <div class="ct-squareThumbnail-body">
+                            <div class="ct-squareThumbnail-title"><span class="ct-fw-700 text-uppercase">A propos</span><i class="fa fa-info-circle"></i></div>
+                            <div class="ct-squareThumbnail-content">
+                                <div id="accordion2" role="tablist" aria-multiselectable="true" class="panel-group ct-accordion--dark">
+                                    <div class="panel panel-default">
+
+                                        <ul class="ct-sidebar list-unstyled">
+                                            <li class="dropdown"><a>Pourquoi utiliser une billetterie en ligne ?</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">C'est facile et rapide à mettre en place. Vous pouvez modifier la configuration à tout moment.</a></li>
+                                                    <li><a href="#">Les acheteurs n'ont plus à se déplacer.</a></li>
+                                                    <li><a href="#">C'est sécurisé et sécurisant. Vous encaissez l'argent de vos ventes avant l'événement</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown"><a>Votre soltion est elle securisée ?</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">SmartTicket est également la 1re billetterie en ligne sécurisée et compatible tout support : mobile, tablette et ordinateur.</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown"><a>Combien de temps dois-je attendre avant la mise en vente ?</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">Les billets peuvent être mis en ventes immédiatement.</a></li>
+                                                </ul>
+                                            </li>
+
+
+
+
+                                        </ul>
+                                        <br>
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ct-divider--greyBig ct-u-marginBoth40"></div>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-6">
+                    <div class="ct-u-displayTableVertical ct-u-displayTableMobile text-right">
+                        <div class="ct-u-displayTableCell">
+                            <h5>Vous ne trouvez pas ce que vous cherchez?</h5>
+                        </div>
+                        <div class="ct-u-displayTableCell"><a href="{{ path('contact')}}" class="btn btn-primary btn-lg text-uppercase">contact</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <header id="home" class="ct-u-colorWhite text-left">
+        <div data-adaptiveHeight="true" data-animations="true" data-autoplay="true" data-infinite="true" data-autoplaySpeed="6000" data-draggable="true" data-touchMove="false" data-arrows="true" data-items="1" class="ct-slick ct-js-slick">
+            <div data-bg="{{asset('images/Colour-splash-1.jpg')}}" class="item">
+                <div class="ct-slick-inner">
+                    <div class="ct-slick-content">
+                        <div class="container">
+                            <div class="12">
+                                <div class="row">
+
+                                    <div class="col-md-8 col-md-offset-2 col-lg-offset-0 col-lg-7 ct-u-z-index4">
+                                        <h4 class="text-uppercase">newsletter subscription</h4>
+                                        <div class="ct-divider--doubleBorder ct-u-marginBoth20"></div>
+                                        <p class="ct-u-marginBottom20">Inscrivez-vous à notre newsletter pour recevoir directement sur votre email nos actualités</p>
+                                        <div role="alert" class="successMessage alert alert-success alert-dismissible">
+                                            <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">�</span></button><strong>Success!</strong>Congratulation, mission success
+                                        </div>
+                                        <div role="alert" class="errorMessage alert alert-danger alert-dismissible">
+                                            <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">�</span></button><strong>Danger!</strong>You did something wrong
+                                        </div>
+                                        <form method="POST" class="validateIt ct-u-marginBottom30"  action="#">
+                                            <div class="input-group input--withIcon"><span class="input-icon"><i class="fa fa-envelope"></i></span>
+                                                <input type="email" required="" name="email" class="form-control input-lg"><span class="input-group-btn">
+                                                <input type="submit" class="btn btn-default btn-transparent text-uppercase" value="Subscribe"></span>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                                <br><br><br>
+                                <div class="row">
+                                    <div class="col-md-10 col-md-offset-1">
+                                        <div class="col-sm-4">
+                                            <div class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big"><a href="#">
+                                                    <div class="ct-iconBox-icon"><i class="fa fa-heart"></i>
+                                                    </div>
+                                                    <div class="ct-iconBox-description">
+                                                        <h4 class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big">Pratique</h4>
+
+                                                    </div></a></div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big"><a href="#">
+                                                    <div class="ct-iconBox-icon"><i class="fa fa-unlock-alt"></i>
+                                                    </div>
+                                                    <div class="ct-iconBox-description">
+                                                        <h4 class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big">Sécurité</h4>
+
+                                                    </div></a></div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big"><a href="#">
+                                                    <div class="ct-iconBox-icon"><i class="fa fa-clock-o"></i>
+                                                    </div>
+                                                    <div class="ct-iconBox-description">
+                                                        <h4 class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big">Mise en place</h4>
+
+                                                    </div></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+{% endblock body %}

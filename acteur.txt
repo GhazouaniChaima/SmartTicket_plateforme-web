@@ -1,0 +1,6 @@
+Admin :
+       nom utilisateur : ghazouani
+       mot de passe : 123456789
+client : 
+  		nom utilisateur : chaima
+      	 mot de passe : 123456789

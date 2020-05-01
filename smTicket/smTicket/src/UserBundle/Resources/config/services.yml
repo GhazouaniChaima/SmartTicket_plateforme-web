@@ -1,0 +1,14 @@
+services:
+    user.form.registration:
+      class: UserBundle\Form\RegistrationType
+      tags:
+          - { name: form.type, alias: user_registration }
+    user.profile.form.type:
+      class: UserBundle\Form\ProfileType
+      arguments: [%fos_user.model.user.class%]
+      tags:
+          - { name: form.type, alias: user_profile }
+
+    app.authentication_success_handler:
+        class: UserBundle\Authentication\SuccessHandler
+        arguments: ['@router']

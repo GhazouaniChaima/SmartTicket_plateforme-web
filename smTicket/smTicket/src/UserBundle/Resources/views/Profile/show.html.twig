@@ -1,0 +1,172 @@
+{% extends "::layout_interne.html.twig" %}
+{% block body %}
+<header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{asset('images/many.jpg')}}" data-background-mobile="{{asset('images/many.jpg')}}" class="ct-mediaSection">
+    <div class="ct-breadcrumbs">
+        <ul class="list-inline list-unstyled">
+            <li><a href="{{ path('accueil')}}"><i class="fa fa-home"></i></a></li><li><a href="{{ path('profil')}}"><i class="fa fa-angle-right"></i>Tableau De Bord</a><a href="{{ path('consulterEvenementOrg')}}"><i class="fa fa-angle-right"></i>Mon Profil</a><i class="fa fa-angle-right"></i>Details Compte</li>
+
+        </ul>
+    </div>
+</header>
+
+<section class="ct-u-paddingTop60 ct-u-paddingBottom90">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="ct-textBox ct-u-backgroundGrey">
+
+                        <h4 class="ct-u-colorMotive text-uppercase ct-fw-700 ct-u-marginBottom50">Coordonnées</h4>
+                    <div class="ct-textBox-inner ct-u-marginBottom30">
+
+    <div class="fos_user_user_show">
+
+      {#  <div class="text-center">
+            <div class="ct-userImage"><img class="img-circlee" style="width: 100px;height: 100px;" src="{{ asset('uploads/'~user.path) }}" alt="profile"></div>
+        </div> <br>
+
+        <div class="input-item"><h5><b>Nom Utlisateur</b>: {{ user.username }}<i></i></h5>
+
+        </div><br>
+        <div class="input-item"><h5><b> Prenom</b>: {{ user.prenom }}</h5>
+
+        </div>
+
+        <div class="input-item"><h5><b>Adresse email</b>: {{ user.email }}</h5>
+
+        </div>
+        <div class="input-item"><h5><b>Téléphone</b>: {{ user.tel }}</h5>
+
+        </div>
+
+        <div class="input-item"><h5><b>Adresse</b>: {{ user.adresse }}</h5>
+
+        </div>#}
+        <div class="text-center">
+            <div class="ct-userImage"><img class="img-circlee" style="width: 100px;height: 100px;" src="{{ asset('uploads/'~user.path) }}" alt="profile"></div>
+        </div> <br>
+<table>
+    <tr>
+        <td><h4>Nom Utlisateur&nbsp;</h4></td><td>{{ user.username }}</td></tr>
+    <tr> <td><h4>Prenom&nbsp;</h4><td>{{ user.prenom }}</td></tr>
+    <tr>   <td><h4>Adresse email&nbsp;</h4><td> {{ user.email }}</td></tr>
+    <tr>  <td><h4>Téléphone&nbsp;</h4><td>{{ user.tel }}</td></tr>
+    <tr>  <td><h4>Adresse&nbsp;</h4><td>{{ user.adresse }}</td></tr>
+
+</table>
+
+
+
+    </div>
+
+
+
+
+
+
+                    </div> <div class="text-right">
+                        <a href="{{ path('fos_user_profile_edit') }}" class="btn btn-grey btn-lg"><i class="fa fa-trash-o">Modifier le profil</i></a>
+                        <a href="{{ path('fos_user_change_password') }}" class="btn btn-grey btn-lg "><i class="fa fa-trash-o">Changer le mot de passe</i></a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="ct-textBox ct-u-backgroundGrey">
+                    <h6 class="ct-u-colorMotive text-uppercase ct-fw-700 ct-u-marginBottom30">POURQUOI CRÉER UN COMPTE?</h6>
+                    <ul class="list-inline list-unstyled ct-u-marginBottom40 text-left ct-list--moreSpace">
+                        <li><i class="fa fa-long-arrow-right ct-u-colorMotive"></i>SmartTicket est également la 1re billetterie en ligne sécurisée et compatible tout support : mobile, tablette et ordinateur</li>
+                        <li><i class="fa fa-long-arrow-right ct-u-colorMotive"></i>Réservez des billetteries en ligne rapidement et facilement</li>
+                        <li><i class="fa fa-long-arrow-right ct-u-colorMotive"></i>La solution performante pour vos billets</li>
+                        <li><i class="fa fa-long-arrow-right ct-u-colorMotive"></i>Vous pouvez modifier la configuration à tout moment</li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<header id="home" class="ct-u-colorWhite text-left">
+    <div data-adaptiveHeight="true" data-animations="true" data-autoplay="true" data-infinite="true" data-autoplaySpeed="6000" data-draggable="true" data-touchMove="false" data-arrows="true" data-items="1" class="ct-slick ct-js-slick">
+        <div data-bg="{{asset('images/Colour-splash-1.jpg')}}" class="item">
+            <div class="ct-slick-inner">
+                <div class="ct-slick-content">
+                    <div class="container">
+                        <div class="12">
+
+                            <div class="row">
+
+                                <div class="col-md-8 col-md-offset-2 col-lg-offset-0 col-lg-7 ct-u-z-index4">
+                                    <h4 class="text-uppercase">Nos utilisateurs témoignent</h4>
+                                    <div class="ct-divider--doubleBorder ct-u-marginBoth20"></div>
+                                    <p class="ct-u-marginBottom20">Inscrivez-vous à notre newsletter pour recevoir directement sur votre email nos actualités</p>
+                                    <div role="alert" class="successMessage alert alert-success alert-dismissible">
+                                        <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">�</span></button><strong>Success</strong>Congratulation, mission success
+                                    </div>
+                                    <div role="alert" class="errorMessage alert alert-danger alert-dismissible">
+                                        <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">�</span></button><strong>Danger</strong>You did something wrong
+                                    </div>
+                                    <form method="POST" class="validateIt ct-u-marginBottom30"  action="#">
+                                        <div class="input-group input--withIcon">
+                                            <textarea required="" name="description" class="form-control input-lg"></textarea>
+                                            <span class="input-group-btn">
+                                                <input type="submit" class="btn btn-default btn-transparent text-uppercase" value="Subscribe"></span>
+                                        </div>
+                                    </form>
+
+                                </div>
+
+                            </div>
+                            <br><br><br>
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1">
+                                    <div class="col-sm-4">
+                                        <div class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big"><a href="#">
+                                                <div class="ct-iconBox-icon"><i class="fa fa-heart"></i>
+                                                </div>
+                                                <div class="ct-iconBox-description">
+                                                    <h4 class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big">Pratique</h4>
+
+                                                </div></a></div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big"><a href="#">
+                                                <div class="ct-iconBox-icon"><i class="fa fa-unlock-alt"></i>
+                                                </div>
+                                                <div class="ct-iconBox-description">
+                                                    <h4 class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big">Sécurité</h4>
+
+                                                </div></a></div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big"><a href="#">
+                                                <div class="ct-iconBox-icon"><i class="fa fa-clock-o"></i>
+                                                </div>
+                                                <div class="ct-iconBox-description">
+                                                    <h4 class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big">Mise en place</h4>
+
+                                                </div></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+{% endblock body %}

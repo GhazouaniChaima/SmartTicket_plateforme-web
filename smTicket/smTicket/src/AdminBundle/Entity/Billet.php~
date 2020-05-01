@@ -1,0 +1,140 @@
+<?php
+
+namespace AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Billet
+ *
+ * @ORM\Table(name="ClasseBillet")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\BilletRepository")
+ */
+class Billet
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="tarif", type="float")
+     */
+    private $tarif;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="qntBillet", type="integer")
+     */
+    private $qntBillet;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="zone", type="string")
+     */
+    private $classe;
+    
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Evenement",
+      inversedBy="Billets")
+     */
+    private $evenement;
+
+
+    
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set tarif
+     *
+     * @param float $tarif
+     * @return Billet
+     */
+    public function setTarif($tarif)
+    {
+        $this->tarif = $tarif;
+
+        return $this;
+    }
+
+    /**
+     * Get tarif
+     *
+     * @return float 
+     */
+    public function getTarif()
+    {
+        return $this->tarif;
+    }
+
+    /**
+     * Set evenement
+     *
+     * @param \AdminBundle\Entity\Evenement $evenement
+     * @return Billet
+     */
+    public function setEvenement(\AdminBundle\Entity\Evenement $evenement = null)
+    {
+        $this->evenement = $evenement;
+
+        return $this;
+    }
+
+    /**
+     * Get evenement
+     *
+     * @return \AdminBundle\Entity\Evenement 
+     */
+    public function getEvenement()
+    {
+        return $this->evenement;
+    }
+
+    /**
+     * Set qntBillet
+     *
+     * @param integer $qntBillet
+     *
+     * @return Billet
+     */
+    public function setQntBillet($qntBillet)
+    {
+        $this->qntBillet = $qntBillet;
+
+        return $this;
+    }
+
+    /**
+     * Get qntBillet
+     *
+     * @return integer
+     */
+    public function getQntBillet()
+    {
+        return $this->qntBillet;
+    }
+
+
+
+}

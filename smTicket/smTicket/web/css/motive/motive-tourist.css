@@ -1,0 +1,452 @@
+.btn-default {
+  color: #940707;
+}
+.btn-primary {
+  background-color: #940707;
+  border-color: #940707;
+}
+.btn-primaryDark {
+  background-color: #940707;
+  border-color: #940707;
+}
+.btn-default:hover,
+.btn-grey:hover,
+.btn-success:hover,
+.btn-info:hover,
+.btn-warning:hover,
+.btn-danger:hover,
+.btn-dark:hover,
+.btn-bordered--dark:hover,
+.btn-bordered--Light:hover,
+.btn.active:hover,
+.btn-default:focus,
+.btn-grey:focus,
+.btn-success:focus,
+.btn-info:focus,
+.btn-warning:focus,
+.btn-danger:focus,
+.btn-dark:focus,
+.btn-bordered--dark:focus,
+.btn-bordered--Light:focus,
+.btn.active:focus,
+.btn-default:active,
+.btn-grey:active,
+.btn-success:active,
+.btn-info:active,
+.btn-warning:active,
+.btn-danger:active,
+.btn-dark:active,
+.btn-bordered--dark:active,
+.btn-bordered--Light:active,
+.btn.active:active,
+.btn-default.active,
+.btn-grey.active,
+.btn-success.active,
+.btn-info.active,
+.btn-warning.active,
+.btn-danger.active,
+.btn-dark.active,
+.btn-bordered--dark.active,
+.btn-bordered--Light.active,
+.btn.active.active {
+  color: #ffffff;
+  background-color: #940707;
+  border-color: #940707;
+}
+.btn-toTop {
+  color: #940707;
+}
+.beatpicker-clearButton {
+  background-color: #940707;
+}
+.input-focusMotive:focus {
+  border-color: #940707;
+}
+.ct-checbox--custom label:after {
+  background-color: #940707;
+}
+.ct-checbox--custom input[type=checkbox]:checked + label {
+  background-color: #940707;
+  color: #fff;
+}
+.ct-checbox--custom input[type=checkbox]:checked + label:before {
+  border-right: 2px solid #940707;
+  border-bottom: 2px solid #940707;
+}
+.ct-checkbox-motive label:after {
+  background-color: #940707;
+  border: 1px solid #940707;
+}
+.ct-checkbox-motive input[type=checkbox]:checked + label:before {
+  border-bottom: 2px solid #940707;
+  border-right: 2px solid #940707;
+}
+.ct-checkbox-motive input[type=checkbox]:checked + label {
+  background-color: #940707;
+}
+.ct-topBar {
+  background-color:  #940707;
+
+;
+}
+.ct-topBar ul > li:before {
+  background-color: #ffffff;
+}
+.ct-topBar ul > li:after {
+  background-color: #000000;
+}
+.ct-topBar .btn {
+  color: #940707;
+}
+.navbar .navbar-nav li a:hover {
+  color: #940707;
+}
+.navbar .navbar-nav li.active a {
+  color: #940707;
+}
+.navbar .dropdown .dropdown-menu {
+  border-top: 1px solid #940707;
+}
+.ct-menuMobile .ct-menuMobile-navbar li a:hover {
+  color: #940707;
+}
+.ct-menuMobile .ct-menuMobile-navbar .open .dropdown-menu {
+  border-top: 1px solid #940707;
+  border-bottom: 1px solid #940707;
+}
+.ct-list--circleWithIcons .ct-list-iconContainer {
+  background-color: #940707;
+}
+.ct-list--circleWithIconsTransparent .ct-icon-container {
+  border: 2px solid #940707;
+  color: #940707;
+}
+.ct-list--circleWithIcons-bordered a:hover {
+  color: #940707;
+}
+.ct-list--iconsTop i {
+  color: #940707;
+}
+.ct-u-colorMotive {
+  color: #940707;
+}
+.ct-u-backgroundMotive {
+  background-color:  #999999
+;
+}
+.ct-u-colorBlueLight {
+  color: #940707;
+}
+.ct-reserveTicket {
+  background-color: #940707;
+}
+.ct-reserveTicket .ct-reserveTicket-body .ct-reserveTicket-icon {
+  background-color: #940707;
+  color: #940707;
+  -webkit-box-shadow: 5px 2px 0px 0px #ffffff;
+  -moz-box-shadow: 5px 2px 0px 0px #ffffff;
+  box-shadow: 5px 2px 0px 0px #ffffff;
+}
+.ct-reserveTicket .ct-reserveTicket-body .ct-reserveTicket-title:after {
+  border-top: 1px solid #3c7ec2;
+  border-bottom: 1px solid #b30000;
+}
+.ct-infoLabel {
+  background-color: #940707;
+}
+.ct-infoLabel .ct-infoLabel-title:after {
+  border-top: 1px solid #3c7ec2;
+  border-bottom: 1px solid #b30000;
+}
+.ct-infoLabel .ct-infoLabel-more {
+  background-color: #5d9fe2;
+}
+.ct-infoLabel--style2 .ct-infoLabel-subtitle:after {
+  border-top: 1px solid #3c7ec2;
+  border-bottom: 1px solid #b30000;
+}
+.starrr i,
+.starrr-circle i {
+  color: #940707;
+}
+.nstSlider .bar {
+  background-color: #940707;
+}
+.ct-breadcrumbs {
+  background-color: #transparent;
+}
+.ct-breadcrumbs a:hover {
+  color: #940707;
+}
+.ct-breadcrumbs--white {
+  color: #940707;
+  background-color: #fff;
+}
+.ct-breadcrumbs--white a {
+  color: #940707;
+}
+.ct-divider--doubleBorder {
+  border-top: 1px solid #940707;
+  border-bottom: 1px solid #940707;
+}
+.ct-squareThumbnail .ct-squareThumbnail-title {
+  background-color: #940707;
+}
+.ct-squareThumbnail .ct-squareThumbnail-content a:hover {
+  color: #940707;
+}
+.ct-squareThumbnail--withHover .ct-squareThumbnail-mask {
+  background-color: #940707;
+}
+.ct-sidebar .dropdown .dropdown-menu {
+  color: #940707;
+}
+.ct-sidebar .widget .widget-inner .widget-title {
+  background-color: #940707;
+}
+.ct-sidebar .widget .widget-inner a:hover {
+  color: #940707;
+}
+.ct-sidebar .widget .widget-inner a i {
+  color: #940707;
+}
+.ct-results-panel i {
+  color: #940707;
+}
+.ct-select--style2.single .selectize-input:after {
+  color: #940707;
+}
+.slick-dots .slick-active button {
+  background-color: #940707;
+}
+.ct-slick--arrowsTopBlue > .slick-next,
+.ct-slick--arrowsTopBlue > .slick-prev {
+  background-color: #940707;
+}
+.ct-slick--arrowsCustom .slick-next,
+.ct-slick--arrowsCustom .slick-prev {
+  background-color: #940707;
+}
+.ct-slick--arrowsSquare .slick-next,
+.ct-slick--arrowsSquare .slick-prev {
+  background-color: #940707;
+  border-color: #940707;
+}
+.ct-strip {
+  background-color: #940707;
+}
+.ct-strip .ct-strip-inner:before {
+  border-color: transparent #990000 transparent transparent;
+}
+.ct-strip .ct-strip-inner:after {
+  border-color: #940707 transparent transparent transparent;
+}
+.ct-heading--striped {
+  background-color: #940707;
+.ct-heading--striped:before {
+  background-color: #940707;
+}
+.ct-heading--striped:after {
+  background-color: #940707;
+  border-color: transparent#940707 transparent transparent;
+}
+.ct-heading--striped .ct-right-extension {
+  background-color:#940707;
+}
+.ct-heading--withArrow {
+  background-color: #940707;
+}
+.ct-heading--withArrow:after {
+  border-color: #940707 transparent transparent transparent;
+}
+.ct-infoBox {
+  background-color: #940707;
+}
+.ct-personBox--withHover .ct-personBox-image {
+  background-color: #940707;
+}
+.ct-personBox--titleTop .ct-personBox-title {
+  background-color: #940707;
+}
+.ct-price-container .ct-date {
+  color: #940707;
+}
+.ct-productBox {
+  -webkit-box-shadow: 0px 3px 0px 0px #cc0000;
+  -moz-box-shadow: 0px 3px 0px 0px #cc0000;
+  box-shadow: 0px 3px 0px 0px #cc0000;
+}
+.ct-productBox .ct-productBox-DescriptionInner a {
+  color: #940707;
+}
+.ct-productBox .ct-productBox-DescriptionInner a:hover {
+  color: #940707;
+}
+.ct-productBox .ct-price {
+  color: #940707;
+}
+.ct-productBox--moreInfo .ct-currency {
+  color: #940707;
+}
+.ct-productBox--moreInfo-inline .ct-productBox-deliveryInformation .starrr i {
+  color: #940707;
+}
+.ct-productBox--moreInfo-inline .ct-discount {
+  color: #940707;
+.ct-deliveryBox .ct-productBox-deliveryInformation .starrr i {
+  color: #498bcf;
+}
+.ct-deliveryBox .ct-discount {
+  color: #940707;
+}
+.ct-productBox--mini .ct-productBox-price {
+  background-color: #940707;
+  color: #940707;
+  font-size: 32px;
+  -webkit-box-shadow: 5px 2px 0px 0px #2e70b4;
+  -moz-box-shadow: 5px 2px 0px 0px #2e70b4;
+  box-shadow: 5px 2px 0px 0px #2e70b4;
+}
+.ct-product-value .ct-text {
+  color: #940707;
+}
+.ct-ribbon {
+  background-color: #940707;
+}
+.ct-ribbon span:before {
+  border-color: transparent transparent transparent #3172b3;
+}
+.ct-latest-deals {
+  background-color: #73aeeb;
+}
+.ct-latest-deals .ct-title:before {
+  background-color: #73aeeb;
+}
+.ct-latest-deals .ct-slick span {
+  border-left: 1px solid #5b98d8;
+}
+.ct-latest-deals .ct-slick span:before {
+  background-color: #8fc5fd;
+}
+.ct-deals-information .ct-date-interval i {
+  color: #940707;
+}
+.ct-deals-information .ct-discount {
+  color: #940707;
+}
+.ct-deals-information ul li i {
+  color: #940707;
+}
+.ct-iconBox--big p {
+  color: #c3e1ff;
+}
+.ct-popularPages a:first-of-type {
+  color: #940707;
+}
+.nav-default > li.active a {
+  background-color: #940707;
+}
+.nav-default > li.active a:hover,
+.nav-default > li.active a:focus,
+.nav-default > li.active a:active {
+  background-color: #940707;
+}
+.ct-nav--left.nav-tabs li a:hover,
+.ct-nav--left.nav-tabs li a:visited,
+.ct-nav--left.nav-tabs li a:focus {
+  color:#940707; 
+}
+.ct-nav--left.nav-tabs li a:hover .ct-tab-number,
+.ct-nav--left.nav-tabs li a:visited .ct-tab-number,
+.ct-nav--left.nav-tabs li a:focus .ct-tab-number {
+  color: #940707;
+.ct-nav--left.nav-tabs .ct-tab-number {
+  background-color: #940707;
+  border: 2px solid #940707;
+}
+.ct-nav--left.nav-tabs .active a {
+  color: #940707;
+.ct-nav--left.nav-tabs .active .ct-tab-number {
+  color: #940707;
+}
+.panel-group .panel-default > .panel-heading a {
+  color:#940707;
+}
+.ct-accordion--dark .panel-default > .panel-heading a:hover {
+  color: #940707;
+}
+.ct-accordion--dark2 .panel-default > .panel-heading a:after {
+  background-color: #940707;
+  border-color: #940707;
+  margin-top: -9px;
+}
+.ct-accordion--dark2 .panel-default > .panel-heading a:hover {
+  color: #940707;
+}
+.panel-group .ct-accordion--decorated > .panel-heading a:after {
+  background-color: #940707;
+  border-color: #940707;
+}
+.ct-productPrice--circle {
+  -webkit-box-shadow: 2px 4px 0px 0px #940707;
+  -moz-box-shadow: 2px 4px 0px 0px #940707;
+  box-shadow: 2px 4px 0px 0px #940707;
+}
+.ct-gallery-itemDefaultHover figcaption {
+  background-color: rgba(73, 139, 207, 0.9);
+}
+.ct-gallery-itemHoverSquare:hover figcaption {
+  background-color: rgba(73, 139, 207, 0.4);
+  border-color:#940707;
+.ct-blog .ct-article .ct-article-meta i {
+  color: #940707;
+.ct-blog .ct-article .ct-article-category a:hover {
+  color: #940707;
+}
+.ct-blog .ct-article--grey:hover .ct-article-media {
+  background-color: #3693f3;
+}
+.ct-blog-single .ct-article .ct-article-tags i {
+  color: #940707;
+}
+.ct-blog-single .ct-article .ct-article-tags a:hover {
+  color: #940707;
+}
+.ct-comments--style2 li ul li a i {
+  color: #940707;
+}
+.ct-comments--style2 li ul li a:hover {
+  color: #940707;
+.widget-latestActivities .ct-price {
+  color: #940707;
+}
+.widget-listDecorated .ct-icon-container {
+  background-color: #940707;
+.widget-listDecorated .media .media-heading {
+  color: #940707;
+}
+.widget-tags a:hover {
+  color: #940707;
+  border: 1px solid #940707;
+}
+.widget-contact i {
+  color: #940707;
+footer a:hover {
+  color: #940707;
+}
+.ct-gallery-filters .active {
+  border-color: #940707;
+  color: #940707;
+}
+.ct-listing .ct-gallery-item .ct-price {
+  color: #940707;
+}
+.ct-listing--wide .ct-lisitng-banner {
+  background-color: #940707;
+}
+.modal--motive .modal-content {
+  background-color: #940707;
+}
+.ct-googleMap--customInfoWindow a:hover {
+  color: #940707;
+}

@@ -1,0 +1,75 @@
+ 
+ajouterEvenementEtCatBillet:
+    path:     /ajouterEvenementEtCatBillet
+    defaults: { _controller: ClientBundle:Evenement:ajouterEvenementEtCatBillet }
+    
+consulterEvenementOrg:
+    path:     /consulterEvenement
+    defaults: { _controller: ClientBundle:Evenement:consulterEvenementEtCatBillet }
+    
+modifierEvenementClient:
+    path:     /modifierEvenementClient/{id}
+    defaults: { _controller: ClientBundle:Evenement:modifierEvenementEtCatBillet}
+
+sauvgardermodificationClient:
+    path:     /sauvgardermodificationClient/{id}
+    defaults: { _controller: ClientBundle:Evenement:sauvgardermodificationEtCatBillet}
+    
+supprimerEvenementClient:
+    path:     /supprimerEvenementClient/{id}
+    defaults: { _controller: ClientBundle:Evenement:supprimerEvenementEtCatBillet}
+
+consulterStatistque:
+    path:     /consulterStatistque
+    defaults: { _controller: ClientBundle:EvenementClient:consulterStatistque}
+
+##########
+vuEvenement:
+    path:     /vuEvenement
+    defaults: { _controller: ClientBundle:Evenement:vuEvenement}
+
+
+
+ajouterElemPanier:
+    path:     /ajouterElemPanier
+    defaults: { _controller: ClientBundle:Panier:ajouterElemPanier}
+    methods: post
+
+
+supprimerElemPanier:
+    path:     /supprimerElemPanier/{id}
+    defaults: { _controller: ClientBundle:Panier:supprimerElemPanier}
+
+
+panier:
+    path:     /panier
+    defaults: { _controller: ClientBundle:Panier:panier}
+
+
+##########
+validerCommande:
+    path: /validerCommande
+    defaults: { _controller: ClientBundle:commande:validerCommande }
+
+
+
+payerCommande:
+    path: /payerCommande/{id}
+    defaults: { _controller: ClientBundle:commande:payerCommande }
+
+
+Paiement:
+    path: /Paiement/{id}
+    defaults: { _controller: ClientBundle:commande:Paiement }
+
+
+recu:
+    path: /recu
+    defaults: { _controller: ClientBundle:commande:recu }
+
+consulterCommande:
+    path: /consulterCommande
+    defaults: { _controller: ClientBundle:commande:consulterCommande }
+
+
+

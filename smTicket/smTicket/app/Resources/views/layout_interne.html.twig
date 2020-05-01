@@ -1,0 +1,282 @@
+<!DOCTYPE html><!--[if IE 8 ]>
+<html lang="en" class="no-js ie8"></html><![endif]-->
+<!--[if IE 9 ]>
+<html lang="en" class="no-js ie9"></html><![endif]-->
+<html lang="fr" class="no-js">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Tours &amp; Tourist">
+        <meta name="author" content="CreateIT">
+        <meta name="format-detection" content="telephone=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css"  media="screen')}}" />
+        <link rel="shortcut icon" href="{{asset('images/icon2.ico')}}">
+        <title>SmartTicket</title>
+        <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/motive/motive-tourist.css')}}"><!--[if lt IE 9]>
+        <link rel="stylesheet" href="{{asset('css/simple-rating.css') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href={{asset('font-awesome-4.7.0/css/font-awesome.min.css') }} rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <script src="./assets/js/html5shiv.min.js"></script>
+        <script src="./assets/js/respond.min.js"></script><![endif]-->
+        <script src="{{asset('js/modernizr.custom.js')}}"></script>
+
+        
+        
+    </head>
+    <body class="cssAnimate ct-headroom--scrollUpMenu">
+        <div class="ct-preloader">
+            <div class="ct-preloader-content"></div>
+        </div>
+        <nav class="ct-menuMobile text-uppercase">
+            <ul class="ct-menuMobile-navbar">
+                <li class="dropdown"><a href="{{ path('accueil')}}">accueil</a>
+
+                </li>
+                <li class="dropdown"><a href="{{ path('listeDesEvenement')}}">liste des événements</a>
+                </li>
+
+
+                <li class="dropdown"><a href="{{ path('apropos')}}">A propos</a>
+                </li>
+                <li class="dropdown"><a href="{{ path('contact')}}">contact</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="ct-reserveTicket">
+            <div class="ct-reserveTicket-body">
+                <div class="ct-reserveTicket-icon">
+                    <div class="ct-reserveTicket-iconBackground"><i class="fa fa-ticket"></i></div>
+                </div>
+                <div class="ct-reserveTicket-text"><a href="{{ path('sellticket')}}"><span class="ct-reserveTicket-title text-uppercase">réservez votre billet</span></a></div>
+            </div>
+        </div>
+
+        <div id="ct-js-wrapper" class="ct-pageWrapper">
+            <div class="ct-navbarMobile"><a href="{{ path('accueil')}}" class="navbar-brand"><img src="{{asset('images/logo.jpg')}}"></a>
+                <button type="button" class="navbar-toggle"><span class="sr-only">SmartTicket</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="ct-topBar  ct-fw-400">
+                <div class="container">
+                    <ul class="list-inline pull-left">
+                       <li><a href="#"><i class="fa fa-phone"></i>(216)58008855</a></li>
+                        <li><a href="mailto:smartticket@info.com"><i class="fa fa-envelope"></i>smartticketinfo@gmail.com</a></li>
+
+                       {# <li class="dropdown"><a href="{{ path('listeDesEvenement')}}">liste des événements</a>
+                        </li>
+
+
+                        <li class="dropdown"><a href="{{ path('apropos')}}">A propos</a>
+                        </li>
+                        <li class="dropdown"><a href="{{ path('contact')}}">contact</a>
+                        </li>#}
+                    </ul>
+                    <div class="pull-right text-uppercase">
+
+                        <ul class="list-inline">
+                            <li>
+                                <ul class="list-inline ct-socials">
+                                    <li><a href="https://web.facebook.com/SmartTicket-210248699566693/?modal=admin_todo_tour" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+
+                                    <li><a href="https://twitter.com/createitpl"  data-toggle="tooltip" data-placement="bottom" title="Twitte"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="http://www.createit.pl/"  data-toggle="tooltip" data-placement="bottom" title="LinkedIn" ><i class="fa fa-linkedin"></i></a></li>
+
+                                </ul>
+                            </li>
+
+
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <li><a href="{{ path('panier')}}"  data-toggle="tooltip" data-placement="bottom" title="Panier"><i class="fa fa-shopping-cart"></i></a></li>
+                                <script>
+                                    $(document).ready(function(){
+                                        $('[data-toggle="tooltip"]').tooltip();
+                                    });
+                                </script>
+                                <li><a href="{{ path('profil')}}" data-toggle="tooltip" data-placement="bottom" title="Tableau De Bord"><i class="fa fa-user"></i>{{app.user.username}}</a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion <i class="fa fa-sign-out"></i></a></li>
+
+
+                            {% else %}
+                                <li><a href="{{ path('fos_user_registration_register')}}">s'inscrire</a></li>
+                                <li><a href="{{ path('fos_user_security_login')}}">connexion</a></li>
+                               
+                            {% endif %}
+                        </ul>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar yamm text-uppercase">
+                <div class="container">
+                    <div class="navbar-header"><a href="{{ path('accueil')}}"><img width="60%" src="{{asset('images/logo.jpg')}}" alt="logo"></a></div>
+                    <ul class="nav navbar-nav ct-navbar--fadeInUp pull-right">
+
+
+                          <li class="dropdown"><a href="{{ path('accueil')}}">accueil</a>
+
+                        </li>
+                        <li class="dropdown"><a href="{{ path('listeDesEvenement')}}">liste des événements</a>
+                        </li>
+
+
+                        <li class="dropdown"><a href="{{ path('apropos')}}">A propos</a>
+                        </li>
+                        <li class="dropdown"><a href="{{ path('contact')}}">contact</a>
+                        </li>
+                        {#
+                        <li class="dropdown"><a href="{{ path('listeDesEvenement') ~ "?categorie=2" }}">Cinéma</a>
+
+                        </li>
+                        <li class="dropdown"><a href="{{ path('listeDesEvenement') ~ "?categorie=4"}}">Musique</a>
+                        </li>
+                     
+
+                        <li class="dropdown"><a href="{{ path('listeDesEvenement') ~ "?categorie=3"}}">Théatre</a>
+                        </li>
+                        <li class="dropdown"><a href="{{ path('listeDesEvenement') ~ "?categorie=5"}}">Fistivals</a>
+                        </li>
+
+                        <li class="dropdown"><a href="{{ path('listeDesEvenement') ~ "?categorie=6"}}">Sport</a>
+                        </li>
+
+                        <li class="dropdown"><a href="{{ path('listeDesEvenement') ~ "?categorie=7"}}">Concert</a>
+                        </li>#}
+                       
+                       
+
+
+                    </ul>
+                </div>
+            </nav>
+
+
+        {% block body %}{% endblock body %}
+
+
+        <footer class="ct-textBox--small ct-u-backgroundRose   ct-u-colorBlackLight">
+
+            <div class="ct-prefooter">
+
+                <div class="container">
+
+                    <div class="ct-prefooter-inner ct-u-relative ct-u-paddingTop80 ct-u-paddingBottom50"><a href="#home" class="btn-toTop ct-js-btnScroll"><i class="fa fa-angle-up ct-js-btnScroll"></i></a>
+                        <div class="row">
+
+                            <div class="col-sm-3">
+                                <div class="widget widget-contact">
+
+
+                                    <div class="widget-inner">
+                                        <div class="navbar-header"><a href="{{ path('accueil')}}"><img width="60%" src="{{asset('images/logo.jpg')}}" alt="logo"></a></div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="widget widget-contact">
+                                    <div class="widget-inner">
+                                        <h6 class="text-uppercase ct-u-colorMotive ct-fw-600 ct-u-marginBottom30">Nous contacter</h6>
+                                        <ul class="list-inline list-unstyled">
+                                            <li><a href="https://www.google.pl/maps/place/Manouba/@36.8099176,10.0601505,14z/data=!3m1!4b1!4m5!3m4!1s0x12fd326a6997b651:0xae1949b938bf5487!8m2!3d36.8093284!4d10.0863269"><i class="fa fa-map-marker"></i>Manouba</a></li>
+                                            <li><i class="fa fa-phone"></i>Phone: (216)58008855</li>
+                                            <li><i class="fa fa-envelope"></i>Mail: <a href="mailto:smartticket@info.com"> smartticket@info.com</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="widget widget-recentPosts">
+                                    <div class="widget-inner">
+                                        <h6 class="text-uppercase ct-u-colorMotive ct-fw-600 ct-u-marginBottom20">MENU</h6>
+                                        <ul class="list-unstyled text-capitalize">
+                                            <li><a href="{{ path('accueil')}}">accueil</a></li>
+                                            <li><a href="{{ path('listeDesEvenement')}}">liste des événements</a></li>
+
+
+                                            <li><a href="{{ path('apropos')}}">A Propos</a></li>
+                                            <li><a href="{{ path('contact')}}">contact</a></li>
+
+
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-3">
+                                <div class="widget widget-contact">
+                                    <div class="widget-inner">
+                                        <h6 class="text-uppercase ct-u-colorMotive ct-fw-600 ct-u-marginBottom30">Catégorie</h6>
+                                        <ul class="list-inline list-unstyled">
+                                            <li><a href="#">Cinéma</a></li><br>
+                                            <li><a href="#">Musique</a></li><br>
+                                            <li><a href="#">Théatre</a></li><br>
+                                            <li><a href="#">Fistivals</a></li><br>
+                                            <li><a href="#">Sport</a></li><br>
+                                            <li><a href="#">Concert</a></li><br>
+
+                                        </ul>
+
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="ct-postfooter text-center">      <span>Copyright 2015. All Rights Reserved</span></div>
+            </div>
+        </footer>
+
+
+
+    <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script src="{{asset('js/light-gallery/js/lightGallery.js')}}"></script>
+    <script src="{{asset('js/main-compiled.js')}}"></script>
+    <script src="{{asset('js/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{asset('js/magnific-popup/init.js')}}"></script>
+    <script src="{{asset('js/isotope/jquery.isotope.min.js')}}"></script>
+    <script src="{{asset('js/isotope/imagesloaded.js')}}"></script>
+    <script src="{{asset('js/isotope/infinitescroll.min.js')}}"></script>
+    <script src="{{asset('js/isotope/init.js')}}"></script>
+    <script src="{{asset('js/selectize.js-master/dist/js/standalone/selectize.min.js')}}"></script>
+
+     <script src="{{asset('js/jQueryShopLocator/src/shop-locator.js')}}"></script>
+    <script src="{{asset('js/jQueryShopLocator/init.js')}}"></script>
+
+
+    <script src="{{asset('js/jquery.nstSlider/jquery.nstSlider.js')}}"></script>
+    <script src="{{asset('js/beat_picker/BeatPicker.min.js')}}"></script>
+    
+        <script src="{{asset('js/jquery.nstSlider/jquery.nstSlider.js')}}"></script>
+    <script src="{{asset('js/beat_picker/BeatPicker.min.js')}}"></script>
+
+            {% block script %}{% endblock %}
+
+
+
+    
+ 
+</body>
+</html>       

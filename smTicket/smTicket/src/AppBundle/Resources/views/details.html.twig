@@ -1,0 +1,203 @@
+{% extends "::layout_interne.html.twig" %}
+{% block script %}
+
+    <script src="{{asset('js/simple-rating.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.rating').rating();
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        function myFunction() {
+            var x = document.getElementById("qte").value;
+            if (x >="4") {
+
+
+                document.getElementById("demo").innerHTML = "le nombre du billet au max 3 ";
+            }
+        }
+    </script>
+
+
+
+{% endblock %}
+{% block body %}
+
+
+
+
+    <header  style="width: 1500px;height: 400px;" id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{ asset('uploads/'~event.path) }}" data-background-mobile="{{ asset('uploads/'~event.path) }}" class="ct-mediaSection">
+
+    </header>
+    <section class="ct-u-paddingTop50 ct-u-paddingBottom70">
+        <div class="container">
+            <div class="row">
+            <div class="ct-productBox-DescriptionInner"><a href="#">
+                    <h3 class="text-capitalize ct-u-marginBottom10 ct-fw-700">{{event.titreEvenement}} - {{ mintarif }} DNT</h3></a>
+                <div data-rating="{{ event.noteGlobale }}" class="starrr">
+
+                </div>
+            </div><br>
+            <ul class="ct-article-meta list-unstyled list-inline">
+                <li itemprop="dateCreated" class="ct-article-date"><i class="fa fa-calendar"></i>{{ event.dateDebutEvenement|date('d/m/y') }} à {{ event.heureDebutEvenement|date('H:i:s') }} - {{ event.dateFinEvenement|date('d/m/y') }} à {{ event.heureFinEvenement|date('H:i:s') }}</li>
+
+
+            </ul>
+            <div class="ct-productBox-MetaItem"><span class="ct-u-colorMotive ct-fw-700 text-uppercase"><i class="fa fa-map-marker"></i>{{ event.lieuEvenement }}</span></div>
+
+
+    
+            <div class="ct-divider--greyBig ct-u-marginBoth30"></div>
+            <ul class="list-unstyled ct-list--iconsTop ct-u-marginBottom50">
+                <li><p class="ct-u-marginBottom30 ct-u-colorBlackLight">{{ event.descriptionEvenement|raw }}</p></li>
+
+                <li><i class="fa fa-bar-chart"></i><span class="h5 ct-fw-700"><small> {{ event.Vues }} Vues</small></span></li></ul>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="accordion" role="tablist" aria-multiselectable="true" class="panel-group">
+                        <div class="panel panel-default">
+                            <div id="headingOne" role="tab" class="panel-heading">
+                                <h5 class="text-capitalize ct-u-colorMotive ct-u-marginBottom30"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Billets</a></h5>
+                            </div>
+                            <div id="collapseOne" role="tabpanel" aria-labelledby="headingOne" class="panel-collapse collapse in">
+                                <div class="panel-body">
+
+                                    <div class="ct-js-gallery ct-gallery ct-listing">
+
+
+
+                                        <form class="ct-form" action="{{path('ajouterElemPanier')}} " method="post" name="f" >
+
+                                        {% for cb in classebillet %}
+                                        <div class="ct-gallery-item spring">
+                                            <div class="ct-u-displayTableVertical">
+
+                                                <div class="col-md-2">
+                                                    <div class="ct-u-displayTableCell">{{ cb.classe }}</div>
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="ct-u-displayTableCell"><span class="ct-price">{{ cb.tarif }} DNT</span></div>
+                                                </div>
+
+                                                <div class="col-md-1">
+
+                                                    <label>
+                                                        <input class="form-control input--withBorder  input-focusMotive"
+                                                               name="quantite[{{ cb.id }}][]" type="number" min="1" max="{{ cb.qntStock }}"/>
+                                                    </label>
+
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="ct-u-displayTableCell"><span class="ct-price"></span></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <p id="demo" data-fill-Color="red"></p>
+
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                            {% endfor %}
+
+                                            <br>
+                                        <div class="text-center">
+
+                                           <button type="submit"  class="btn btn-primary btn-lg text-uppercase ct-u-marginTop20"><i class="fa fa-cart-plus"></i> ajouter au panier</button>
+                                        </div>
+
+                                        </form>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+            </div>
+
+
+
+
+
+        <div class="container">
+            <div id="accordion2" role="tablist" aria-multiselectable="true" class="panel-group">
+                <div class="panel panel-default">
+                    <div id="headingOne2" role="tab" class="panel-heading">
+                        <h4 class="ct-fw-400"><a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">commentaires</a></h4>
+                    </div>
+                    <div id="collapseOne2" role="tabpanel" aria-labelledby="headingOne2" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            {% for c in commentaire %}
+                            <ul class="ct-commentList list-unstyled ct-fw-700">
+                                <li>
+                                    <div class="ct-u-displayTable">
+                                        <div class="ct-u-displayTableCell">
+                                            <div class="ct-userImage"><img src="{{ asset('uploads/'~c.usercoment.path) }}" alt="profile"></div>
+                                            <div class="ct-userName ct-u-colorMotive text-uppercase"></div>
+                                        </div>
+                                        <div class="ct-u-displayTableCell">
+                                           {# <div data-rating="4" class="starrr"><span>Overall rating:</span></div>#}
+                                            <div class="ct-userText">
+                                                <h6 class="ct-u-colorMotive ct-u-marginBottom20 text-uppercase">{{ c.usercoment.username }} <b>|</b> {{ c.dateCreationCommentaire|date('d/m/y H:i')  }}</h6>
+                                                <p class="ct-fw-400">
+                                                   {{ c.content }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </li>
+                            </ul>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <h4 class="ct-u-colorMotive text-uppercase">Ajouter un commentaire</h4>
+            <div class="ct-divider--greyLight ct-u-marginTop20 ct-u-marginBottom30"></div>
+            <div class="row">
+                <div class="col-md-5">
+
+
+
+
+
+                    {{ form_start(form) }}
+                    <form class="ct-form-rounded" action="{{ path('details',{'id' :event.id} ) }}" method="POST">
+                        <div class="form-group">
+                            {{ form_widget(form.note) }}
+                            {{ form_widget(form.content) }}
+                            {{ form_widget(form._token) }}
+                            <button type="submit" class="btn btn-primary btn-xs btn-long text-uppercase">Envoyer</button>
+                        </div>
+                    </form>
+                    {{ form_end(form) }}
+                    {{ form_errors(form) }}
+
+                </div>
+            </div>
+            {% endif %}
+
+
+        </div>
+    </section>
+
+
+
+
+
+
+{% endblock body %}

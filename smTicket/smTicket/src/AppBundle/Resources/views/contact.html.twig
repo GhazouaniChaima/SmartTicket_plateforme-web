@@ -1,0 +1,139 @@
+{% extends "::layout_interne.html.twig" %}
+{% block body %}
+    
+    <header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{asset('images/many.jpg')}}" data-background-mobile="{{asset('images/many.jpg')}}" class="ct-mediaSection">
+        <div class="ct-breadcrumbs">
+          <ul class="list-inline list-unstyled text-uppercase">
+            <li><a href="index.html"><i class="fa fa-home"></i></a><i class="fa fa-angle-right"></i>contact</li>
+          </ul>
+        </div>
+      </header>
+      <section class="ct-u-paddingTop80 ct-u-paddingBottom90">
+        <div class="container">
+          <div class="ct-heading--withBorder ct-heading--withBorderGrey ct-u-marginBottom50">
+            <h4 class="ct-u-colorMotive text-uppercase ct-u-marginBottom10">Une question, un besoin ?</h4>
+            <p>N'hésitez pas à nous écrire, nous répondons généralement en quelques minutes.</p>
+          </div>
+          <div class="ct-js-googleMap--contact ct-u-marginBottom50"></div>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="ct-textBox--small ct-u-backgroundGrey">
+                <ul class="list-unstyled ct-list--circleWithIcons ct-list--circleWithIcons-bordered">
+                  <li><span class="ct-list-iconContainer"><i class="fa fa-map-marker"></i></span>
+                    <h6 class="ct-u-marginBottom10">Address</h6>
+                    <p>
+                      Manouba
+                    </p>
+                  </li>
+                  <li><span class="ct-list-iconContainer"><i class="fa fa-phone"></i></span>
+                    <h6 class="ct-u-marginBottom10">Phone</h6>
+                    <p>(216)58008855</p>
+                  </li>
+                  <li><span class="ct-list-iconContainer"><i class="fa fa-envelope"></i></span>
+                      <h6 class="ct-u-marginBottom10">Email</h6><a href="#">Smartticket@gmail.com</a><br><br><br><br><br>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <h4 class="ct-u-marginBottom30">Nous contacter</h4>
+              <div role="alert" class="successMessage alert alert-success alert-dismissible">
+                <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">�</span></button><strong>Success!</strong>Congratulation, mission success
+              </div>
+              <div role="alert" class="errorMessage alert alert-danger alert-dismissible">
+                <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">�</span></button><strong>Danger!</strong>You did something wrong
+              </div>
+              <form action="#" method="POST" class="validateIt ct-u-marginBottom30 ct-form ct-form-grey">
+                <div class="row">
+                  <div class="col-md-6">
+                    <input id="contact_name" data-error-message="nom" placeholder="Nom" type="text" required="" name="field[]" class="form-control input--withBorder ct-u-marginBottom10 input-focusMotive">
+                    <label for="contact_name" class="sr-only"></label>
+                  </div>
+                  <div class="col-md-6">
+                    <input id="contact_email" data-error-message="Email" placeholder="Email" type="email" required="" name="field[]" class="form-control input--withBorder ct-u-marginBottom10 input-focusMotive">
+                    <label for="contact_email" class="sr-only"></label>
+                  </div>
+                    </div>
+                  <div>
+                    <input id="contact_email" data-error-message="sujet" placeholder="Sujet" type="text" required="" name="field[]" class="form-control input--withBorder ct-u-marginBottom10 input-focusMotive">
+                    <label for="contact_email" class="sr-only"></label>
+                  </div>
+                
+                <textarea id="contact_message" data-error-message="Message is required" placeholder="Message" rows="8" required="" name="field[]" title="Message" class="form-control input--withBorder ct-u-marginBottom20 input-focusMotive ct-u-marginBottom20"></textarea>
+                <div class="text-right"><button class="btn btn-primary btn-lg text-uppercase">Nous contacter</button></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    <header id="home" class="ct-u-colorWhite text-left">
+        <div data-adaptiveHeight="true" data-animations="true" data-autoplay="true" data-infinite="true" data-autoplaySpeed="6000" data-draggable="true" data-touchMove="false" data-arrows="true" data-items="1" class="ct-slick ct-js-slick">
+            <div data-bg="{{asset('images/Colour-splash-1.jpg')}}" class="item">
+                <div class="ct-slick-inner">
+                    <div class="ct-slick-content">
+                        <div class="container">
+                            <div class="12">
+                                <div class="row">
+
+                                    <div class="col-md-8 col-md-offset-2 col-lg-offset-0 col-lg-7 ct-u-z-index4">
+                                        <h4 class="text-uppercase">newsletter subscription</h4>
+                                        <div class="ct-divider--doubleBorder ct-u-marginBoth20"></div>
+                                        <p class="ct-u-marginBottom20">Inscrivez-vous à notre newsletter pour recevoir directement sur votre email nos actualités</p>
+                                        <div role="alert" class="successMessage alert alert-success alert-dismissible">
+                                            <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">�</span></button><strong>Success!</strong>Congratulation, mission success
+                                        </div>
+                                        <div role="alert" class="errorMessage alert alert-danger alert-dismissible">
+                                            <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">�</span></button><strong>Danger!</strong>You did something wrong
+                                        </div>
+                                        <form method="POST" class="validateIt ct-u-marginBottom30"  action="#">
+                                            <div class="input-group input--withIcon"><span class="input-icon"><i class="fa fa-envelope"></i></span>
+                                                <input type="email" required="" name="email" class="form-control input-lg"><span class="input-group-btn">
+                                                <input type="submit" class="btn btn-default btn-transparent text-uppercase" value="Subscribe"></span>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+
+                                <br><br><br>
+                                <div class="row">
+                                    <div class="col-md-10 col-md-offset-1">
+                                        <div class="col-sm-4">
+                                            <div class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big"><a href="#">
+                                                    <div class="ct-iconBox-icon"><i class="fa fa-unlock-alt"></i>
+                                                    </div>
+                                                    <div class="ct-iconBox-description">
+                                                        <h4 class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big">Sécurité</h4>
+
+                                                    </div></a></div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big"><a href="#">
+                                                    <div class="ct-iconBox-icon"><i class="fa fa-heart"></i>
+                                                    </div>
+                                                    <div class="ct-iconBox-description">
+                                                        <h4 class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big">Pratique</h4>
+
+                                                    </div></a></div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big"><a href="#">
+                                                    <div class="ct-iconBox-icon"><i class="fa fa-clock-o"></i>
+                                                    </div>
+                                                    <div class="ct-iconBox-description">
+                                                        <h4 class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big">Mise en place</h4>
+
+                                                    </div></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock body %}

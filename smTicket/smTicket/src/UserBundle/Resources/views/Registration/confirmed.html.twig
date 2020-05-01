@@ -1,0 +1,32 @@
+{% extends "::layout_interne.html.twig" %}
+ {% block body %}
+<section class="ct-u-paddingTop60 ct-u-paddingBottom90">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 text-center">
+                <div class="ct-textBox ct-u-backgroundGrey">
+    {% block fos_user_content %}
+        <h1>{{ 'registration.confirmed'|trans({'%username%': user.username}, 'FOSUserBundle') }}</h1>
+        {% if app.session is not empty %}
+            {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
+            {% if targetUrl is not empty %}<h1><p><a href="{{ targetUrl }}">{{ 'registration.back'|trans({}, 'FOSUserBundle') }}</a></p></h1>{% endif %}
+        {% endif %}
+    {% endblock fos_user_content %}
+                    <div class="text-left">
+                    <h4>votre tableau de bord &nbsp;<a href="{{ path('profil')}}"  class="btn btn-primary btn-sm text-uppercase ct-u-marginTop20">tableau de bord</a></h4>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <a href="{{ path('ajouterEvenementEtCatBillet') }}"  class="btn btn-primary btn-sm text-uppercase ct-u-marginTop20">Créer une billetterie</a>
+                    <a href="{{ path('listeDesEvenement')}}" class="btn btn-primary btn-sm text-uppercase ct-u-marginTop20">Acheter un billet</a>
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+{% endblock body %} 

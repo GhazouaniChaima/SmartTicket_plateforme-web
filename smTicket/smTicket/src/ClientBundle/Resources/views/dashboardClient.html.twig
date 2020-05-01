@@ -1,0 +1,147 @@
+{% extends "::layout_interne.html.twig" %}
+{% block body %}
+    <header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{asset('images/many.jpg')}}" data-background-mobile="{{asset('images/many.jpg')}}" class="ct-mediaSection">
+        <div class="ct-breadcrumbs">
+            <ul class="list-inline list-unstyled">
+                <li><a href="{{ path('accueil')}}"><i class="fa fa-home"></i></a><i class="fa fa-angle-right"></i><i class="fa fa-tachometer"></i>Tableau De Bord</li>
+            </ul>
+        </div>
+    </header>
+    <section class="ct-u-paddingBoth100">
+    <div class="container">
+                  <div class="row">
+                      
+          <div class="col-md-4 col-sm-6">
+                        <div  style="width:350px;height:200px;" class="ct-squareThumbnail ct-squareThumbnail--withHover ct-u-marginBottom30">
+                          <div class="ct-squareThumbnail-body">
+                            <div class="ct-squareThumbnail-title text-center"><span class="ct-fw-700">Mon Compte</span></div>
+                            <div class="ct-squareThumbnail-content">
+                              <ul class="list-unstyled">
+                                <li><a href="{{ path('fos_user_profile_show') }}" class="ct-fw-700">Informations générales</a></li>
+                                <li><a href="{{ path('fos_user_profile_edit') }}" class="ct-fw-700">paramètres de compte</a></li>
+                                <li><a href="#" class="ct-fw-700"></a></li>
+                              </ul>
+                            </div>
+                            <div class="ct-squareThumbnail-button"><a href="#"></a></div>
+                          </div>
+                          <div class="ct-squareThumbnail-mask"><i class="fa fa-user"></i>
+                            <div class="ct-squareThumbnail-text"><span class="ct-fw-700">Mon Compte</span></div>
+                          </div>
+                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                        <div  style="width:350px;height:200px;" class="ct-squareThumbnail ct-squareThumbnail--withHover ct-u-marginBottom30">
+                          <div class="ct-squareThumbnail-body">
+                            <div class="ct-squareThumbnail-title text-center"><span class="ct-fw-700">Mes événements</span></div>
+                            <div class="ct-squareThumbnail-content">
+                              <ul class="list-unstyled">
+                                <li><a href="{{ path('consulterEvenementOrg') }}" class="ct-fw-700">Liste Des événements</a></li>
+                                <li><a href="{{ path('ajouterEvenementEtCatBillet') }}" class="ct-fw-700">Créer événement</a></li>
+                                <li><a href="{{ path('consulterStatistque') }}" class="ct-fw-700">Consulter Statistque</a></li>
+                              </ul>
+                            </div>
+                            <div class="ct-squareThumbnail-button"><a href="#"></a></div>
+                          </div>
+                          <div class="ct-squareThumbnail-mask"><i class="fa fa-home"></i>
+                            <div class="ct-squareThumbnail-text"><span class="ct-fw-700">Mes événements</span></div>
+                          </div>
+                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                        <div style="width:350px;height:200px;" class="ct-squareThumbnail ct-squareThumbnail--withHover ct-u-marginBottom30">
+                          <div class="ct-squareThumbnail-body">
+                            <div class="ct-squareThumbnail-title text-center"><span class="ct-fw-700">Mes Commandes</span></div>
+                            <div class="ct-squareThumbnail-content">
+                              <ul class="list-unstyled">
+                                  <li><a href="{{ path('consulterCommande') }}" class="ct-fw-700">Liste Des commandes</a></li>
+                                <li><a href="#" class="ct-fw-700"></a></li>
+                                <li><a href="#" class="ct-fw-700"></a></li>
+                              </ul>
+                            </div>
+                            <div class="ct-squareThumbnail-button"><a href="#"></a></div>
+                          </div>
+                          <div class="ct-squareThumbnail-mask"><i class="fa fa-shopping-cart"></i>
+                            <div class="ct-squareThumbnail-text"><span class="ct-fw-700">Mes Commandes</span></div>
+                          </div>
+                        </div>
+                </div>
+            
+
+           
+              
+                  </div>
+    </div>
+    </section>
+    <header id="home" class="ct-u-colorWhite text-left">
+        <div data-adaptiveHeight="true" data-animations="true" data-autoplay="true" data-infinite="true" data-autoplaySpeed="6000" data-draggable="true" data-touchMove="false" data-arrows="true" data-items="1" class="ct-slick ct-js-slick">
+            <div data-bg="{{asset('images/Colour-splash-1.jpg')}}" class="item">
+                <div class="ct-slick-inner">
+                    <div class="ct-slick-content">
+                        <div class="container">
+                            <div class="12">
+
+                                <div class="row">
+
+                                    <div class="col-md-8 col-md-offset-2 col-lg-offset-0 col-lg-7 ct-u-z-index4">
+                                        <h4 class="text-uppercase">Nos utilisateurs témoignent</h4>
+                                        <div class="ct-divider--doubleBorder ct-u-marginBoth20"></div>
+                                        <p class="ct-u-marginBottom20">Inscrivez-vous à notre newsletter pour recevoir directement sur votre email nos actualités</p>
+                                        <div role="alert" class="successMessage alert alert-success alert-dismissible">
+                                            <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">�</span></button><strong>Success</strong>Congratulation, mission success
+                                        </div>
+                                        <div role="alert" class="errorMessage alert alert-danger alert-dismissible">
+                                            <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">�</span></button><strong>Danger</strong>You did something wrong
+                                        </div>
+                                        <form method="POST" class="validateIt ct-u-marginBottom30"  action="{{ path('client') }}">
+                                            <div class="input-group input--withIcon">
+
+                                                {{ form_widget(form.content) }}
+                                                {{ form_widget(form._token) }}
+                                                <span class="input-group-btn">
+                                                <input type="submit" class="btn btn-default btn-transparent text-uppercase" value="Subscribe"></span>
+                                            </div>
+                                        </form>
+
+                                    </div>
+
+                                </div>
+                                <br><br><br>
+                                <div class="row">
+                                    <div class="col-md-10 col-md-offset-1">
+                                        <div class="col-sm-4">
+                                            <div class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big"><a href="#">
+                                                    <div class="ct-iconBox-icon"><i class="fa fa-unlock-alt"></i>
+                                                    </div>
+                                                    <div class="ct-iconBox-description">
+                                                        <h4 class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big">Sécurité</h4>
+
+                                                    </div></a></div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big"><a href="#">
+                                                    <div class="ct-iconBox-icon"><i class="fa fa-heart"></i>
+                                                    </div>
+                                                    <div class="ct-iconBox-description">
+                                                        <h4 class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big">Pratique</h4>
+
+                                                    </div></a></div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big"><a href="#">
+                                                    <div class="ct-iconBox-icon"><i class="fa fa-clock-o"></i>
+                                                    </div>
+                                                    <div class="ct-iconBox-description">
+                                                        <h4 class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big">Mise en place</h4>
+
+                                                    </div></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+            {% endblock body %}

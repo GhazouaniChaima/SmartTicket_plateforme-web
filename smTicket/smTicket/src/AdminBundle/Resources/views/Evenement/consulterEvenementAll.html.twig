@@ -1,0 +1,209 @@
+{% extends "::layout_admin.html.twig" %}
+{% block content %}
+
+    {% set réfuser = app.session.flashbag.get("réfuser") %}
+
+
+<div id="page-wrapper">
+
+    {% if event|length < 1 %}
+    <h2><center>liste des événements est vide</center></h2>
+    {% else%}
+    <div class="row">
+
+
+        <!--  page header -->
+        <div class="col-lg-12">
+            <h1 class="page-header">Liste des événements</h1>
+        </div>
+        <!-- end  page header -->
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Advanced Tables -->
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                    {% if (réfuser is not empty) %}
+                    <div class="alert alert-danger alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        L'événement a été bien <strong>réfusée</strong>
+                    </div>
+                    {% endif %}
+                    <div class="table-responsive">
+
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                            <tr>
+
+                                <th>Titre Evenement</th>
+                                <th>Image</th>
+
+                                <th>Date Debut Evenement</th>
+                                <th>Date Fin Evenement</th>
+                                <th>Description Evenement</th>
+                                <th>Nombre de vues</th>
+                                <th>Note avis</th>
+                                 <th>activé ?</th>
+                                <th>Actions</th>
+                                <th>Consulter</th>
+
+                            </tr>
+
+
+                            </thead>
+                            <tbody>
+        {%  for e in event %}
+            <tr class="odd gradeX">
+
+                <td class="center">{{ e.titreEvenement|slice(0, 50) }}</td>
+                <td class="center"> <a  href="#infos2{{loop.index}}" data-toggle="modal"><img style="width: 130px;height: 70px;" src="{{ asset('uploads/'~e.path) }}"></a></td>
+
+                <td class="center">{{ e.dateDebutEvenement|date('d/m/y') }} {{ e.heureDebutEvenement|date('H:i:s') }}</td>
+
+                <td class="center">{{ e.dateFinEvenement|date('d/m/y') }} {{ e.heureFinEvenement|date('H:i:s') }}</td>
+
+                <td class="center">{{ e.descriptionEvenement|slice(0,30)|raw }}...<br>
+                    <a  href="#infos1{{loop.index}}" data-toggle="modal"  class="btn btn-link" >voir plus</a> </td>
+
+                <th class="center">{{ e.vues }}</th>
+                <td class="center"></td>
+
+
+
+
+                {% if e.status == "1" %}
+                    <td class="center">OUI</td>
+                {% elseif e.status == "0" %}
+                    <td class="center">NON</td>
+                {% elseif e.status == "" %}
+                    <td class="center">en attente</td>
+                {% endif %}
+
+
+
+                    {% if e.status == "1" %}
+                        <td class="center"><div class="text-center">  <a  class="btn btn-danger btn-circle btn-lg"  href="#infos3{{loop.index}}" data-toggle="modal" ><i class="fa fa-times"></i></a></div>
+                </td>
+                {% elseif e.status == "0" %}
+                    <td class="center"><div class="text-center">  <a  class="btn btn-success btn-circle btn-lg"  href="#infos4{{loop.index}}" data-toggle="modal" ><i class="fa fa-check"></i></a></div>
+                    </td>
+                {% elseif e.status == "" %}
+                        <td class="center"><div class="text-center">  <a  class="btn btn-danger btn-circle"  href="#infos3{{loop.index}}" data-toggle="modal" ><i class="fa fa-times"></i></a>
+
+                                <a  class="btn btn-success btn-circle" href="#infos4{{loop.index}}" data-toggle="modal" ><i class="fa fa-check"></i></a></div></td>
+
+                {% endif %}
+                <td class="center"><div class="text-center">  <a  class="btn btn-warning btn-circle btn-lg"  href="{{ path('consulterDetailsClasseBillet',{id:e.id})}}"><i class="fa fa-ticket"></i></a></div>
+                </td>
+
+            </tr>
+
+            <div class="modal fade" id="infos1{{loop.index}}">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">x</button>
+                            <h4 class="modal-title">Infos</h4>
+                        </div>
+                        <div class="modal-body">
+                            <h4>Catégorie: </h4> <p> {{ e.categorie.libelleCategorie }}</p>
+
+                            <h4>Description d'événement: </h4> <p> {{ e.descriptionEvenement|raw }}</p>
+
+                            <h4>Ville de l'evénement: </h4> <p>{{ e.ville }}</p>
+
+                            <h4>Lieu: </h4><p>{{ e.lieuEvenement }}</p>
+
+                            <h4>Organisateur: </h4><p>{{ e.user.username }}</p>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="infos2{{loop.index}}">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">x</button>
+                            <h4 class="modal-title">Image de l'événement</h4>
+                        </div>
+                        <div class="modal-body">
+                            <center><img style="width: 400px;height: 300px;" src="{{ asset('uploads/'~e.path) }}"></center>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade" id="infos3{{loop.index}}">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">x</button>
+                            <h4 class="modal-title">Confirmation</h4>
+                        </div>
+                        <div class="modal-body">
+                            Etes-vous sûr de vouloir réfuser ce événement !
+                        </div>
+                        <div class="modal-footer">
+                            <a class="btn btn-default btn-xs" href="{{ path('DesactiverStatus', { 'id': e.id }) }}" >OUI</a>
+                            <button class="btn btn-info" data-dismiss="modal">NON</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade" id="infos4{{loop.index}}">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">x</button>
+                            <h4 class="modal-title">Confirmation</h4>
+                        </div>
+                        <div class="modal-body">
+                            Etes-vous sûr de vouloir valider ce événement !
+                        </div>
+                        <div class="modal-footer">
+                            <a class="btn btn-default btn-xs" href="{{ path('ActiverStatus', { 'id': e.id }) }}" >OUI</a>
+                            <button class="btn btn-info" data-dismiss="modal">NON</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+
+                            </tbody>
+
+                        </table>
+
+                       <div class="text-center">  {{ knp_pagination_render(event) }} </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--End Advanced Tables -->
+        </div>
+    </div>
+
+
+{% endif %}
+</div>
+    <!-- end page-wrapper -->
+
+    <!-- end wrapper -->
+
+
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').dataTable();
+        });
+    </script>
+
+{% endblock content %}

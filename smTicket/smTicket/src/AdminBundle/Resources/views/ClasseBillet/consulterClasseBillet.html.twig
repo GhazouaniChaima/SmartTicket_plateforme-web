@@ -1,0 +1,95 @@
+{% extends "::layout_admin.html.twig" %}
+{% block content %}
+
+
+
+
+    <div id="page-wrapper">
+
+
+        <div class="row">
+            <!--  page header -->
+            <div class="col-lg-12">
+                <h2 class="page-header">Liste des Billets d'événement {{event.titreEvenement}}</h2>
+            </div>
+            <!-- end  page header -->
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Advanced Tables -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <ul class="nav" >
+                            <li>
+                                <!-- search section-->
+                                <div class="input-group "><div class="text-right">
+                                        <input style="width:200px;" type="text" class="form-control" placeholder="Search...">
+                                        <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                                    </div></div>
+                                <!--end search section-->
+                            </li></ul>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                <tr>
+
+                                    <th>Classe Billet</th>
+                                    <th>Tarif</th>
+                                    <th>Quantité</th>
+                                    <th>Quantité en stock</th>
+
+
+                                </tr>
+
+
+                                </thead>
+                                <tbody>
+                                {%  for c in classebillet %}
+                                    <tr class="odd gradeX">
+
+                                        <td class="center">{{ c.classe }}</td>
+                                        <td class="center">{{ c.tarif }}</td>
+                                        <td class="center">{{ c.qntbillet }}</td>
+                                        <td class="center">{{ c.qntStock }}</td>
+
+
+
+                                    </tr>
+
+
+
+                                {% endfor %}
+
+                                </tbody>
+
+                            </table>
+                           {# <div class="text-center">  {{ knp_pagination_render(event) }} </div>#}
+                        </div>
+
+                    </div>
+                </div>
+                <!--End Advanced Tables -->
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- end page-wrapper -->
+
+    <!-- end wrapper -->
+
+
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').dataTable();
+        });
+    </script>
+
+{% endblock content %}

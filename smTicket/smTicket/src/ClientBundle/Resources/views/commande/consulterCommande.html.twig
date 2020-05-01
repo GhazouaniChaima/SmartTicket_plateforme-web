@@ -1,0 +1,90 @@
+{% extends "::layout_interne.html.twig" %}
+{% block body %}
+    <header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{asset('images/many.jpg')}}" data-background-mobile="{{asset('images/many.jpg')}}" class="ct-mediaSection">
+        <div class="ct-breadcrumbs">
+            <ul class="list-inline list-unstyled">
+                <li><a href="{{ path('accueil')}}"><i class="fa fa-home"></i></a></li><li><a href="{{ path('profil')}}"><i class="fa fa-angle-right"></i>Tableau De Bord</a><i class="fa fa-angle-right"></i>Liste Des événements</li>
+
+            </ul>
+        </div>
+    </header>
+
+{% if commande|length < 1 %}
+<section class="ct-u-paddingTop60 ct-u-paddingBottom90">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="ct-textBox ct-u-backgroundGrey">
+                    <a  href="{{ path('listeDesEvenement')}}" class="btn btn-grey btn-lg "><i class="fa fa-cart-plus"> Retour à la liste des événements </i></a><br><br>
+                    <div class="text-center">
+                        <h2><center>Votre liste des commandes est actuellement vide</center></h2></div>
+
+                </div></div></div></div></section>
+{% else%}
+
+    <div class="ct-textBox--small ct-u-backgroundGrey  ct-u-colorBlackLight">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Mes commandes
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                <tr>
+                                    <th align="inherit"><h4>Reference</h4></th>
+                                    <th><h4>Nom événement</h4></th>
+                                    <th><h4>Classe Billet</h4></th>
+                                    <th><h4>Quantité</h4></th>
+                                    <th><h4>Date création commande</h4></th>
+
+                                    <th><h4>Actions</h4></th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {%  for c in commande %}
+                                    <tr class="gradeC">
+
+                                        <td  class="center"><div class="text-center">{{ c.reference }}</div></td>
+                                        <td  class="center"><div class="text-center">  </div></td>
+                                        <td  class="center"><div class="text-center"> </div></td>
+                                        <td class="center"><div class="text-center">{{ c.elementCmd.quantite }}</div></td>
+                                        <td class="center"><div class="text-center">{{ c.date|date('d/m/y H:i')  }}</div></td>
+
+
+
+                                        {% if c.payer == 1 %}
+                                            <td class="center"><div class="text-center">  <a  data-toggle="tooltip" data-placement="bottom" title="Réçu" class="btn btn-primary btn-lg text-uppercase ct-u-marginTop20"  href="{{path("recu")}}" ><i class="fa fa-ticket"></i></a><a  data-toggle="tooltip" data-placement="bottom" title="Ticket" class="btn btn-primary btn-lg text-uppercase ct-u-marginTop20"  href="{{path("recu")}}" ><i class="fa fa-ticket"></i></a></div>
+                                            </td>
+                                        {% elseif c.payer == 0 %}
+                                            <td class="center"><div class="text-center">  <a  class="btn btn-primary btn-lg text-uppercase ct-u-marginTop20"  href="{{path("accueil")}}" ><i class="fa fa-usd"> Payer</i></a></div>
+                                            </td>
+
+                                        {% endif %}
+
+
+
+                                    </tr>
+                                {% endfor %}
+                                {% endif %}
+
+
+                                </tbody>
+                            </table>
+                            <div class="text-center">  {{ knp_pagination_render(commande) }} </div>
+                </div>
+
+
+            </div>
+
+                </div></div></div>
+
+
+
+{% endblock body %}
+

@@ -1,0 +1,104 @@
+
+#tableau de bord
+gestionCommandes:
+    path:     /gestionCommandes
+    defaults: { _controller: AdminBundle:dashboardAdmin:gestionCommandes }
+
+gestionEvenements:
+    path:     /gestionEvenements
+    defaults: { _controller: AdminBundle:dashboardAdmin:gestionEvenements }
+
+gestionUtlisateurs:
+    path:     /gestionUtlisateurs
+    defaults: { _controller: AdminBundle:dashboardAdmin:gestionUtlisateurs }
+
+gestionCommantaire:
+    path:     /gestionCommantaire
+    defaults: { _controller: AdminBundle:dashboardAdmin:gestionCommantaire }
+
+gestionTemoignages:
+    path:     /gestionTemoignages
+    defaults: { _controller: AdminBundle:dashboardAdmin:gestionTemoignages }
+
+gestionNewsletters:
+    path:     /gestionNewsletters
+    defaults: { _controller: AdminBundle:dashboardAdmin:gestionNewsletters }
+
+
+
+
+
+
+consulterEvenement:
+    path:     /consulterEvenement
+    defaults: { _controller: AdminBundle:Evenement:consulterEvenement}
+    
+
+
+
+
+
+ActiverStatus:
+    path:     /ActiverStatus
+    defaults: { _controller: AdminBundle:Evenement:ActiverStatus }
+
+DesactiverStatus:
+    path:     /DesactiverStatus
+    defaults: { _controller: AdminBundle:Evenement:DesactiverStatus }
+
+
+
+consulterDetailsClasseBillet:
+    path:     /consulterDetailsClasseBillet/{id}
+    defaults: { _controller: AdminBundle:classeBillet:consulterDetailsClasseBillet}
+
+
+
+
+
+
+consulterUsers:
+    path:     /consulterUsers
+    defaults: { _controller: AdminBundle:Users:consulterUsers}
+
+
+debloquerUser:
+    path:     /debloquerUser
+    defaults: { _controller: AdminBundle:Users:debloquerUser }
+
+bloquerUser:
+    path:     /bloquerUser
+    defaults: { _controller: AdminBundle:Users:bloquerUser }
+
+
+consulterListeCommandes:
+    path:     /consulterListeCommandes
+    defaults: { _controller: AdminBundle:commande:consulterListeCommandes }
+
+
+
+
+
+
+
+
+
+listeCommantaire:
+    path:     /listeCommantaire
+    defaults: { _controller: AdminBundle:CommantaireAdmin:listeCommantaire }
+
+
+supprimerCommantaire:
+    path:     /supprimerCommantaire/{id}
+    defaults: { _controller: AdminBundle:CommantaireAdmin:supprimerCommantaire }
+
+
+
+
+listeTemoignage:
+    path:     /listeTemoignage
+    defaults: { _controller: AdminBundle:TemoignageAdmin:listeTemoignage }
+
+supprimerTemoignage:
+    path:     /supprimerTemoignage/{id}
+    defaults: { _controller: AdminBundle:TemoignageAdmin:supprimerTemoignage }

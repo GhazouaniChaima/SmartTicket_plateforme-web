@@ -1,0 +1,228 @@
+{% extends "::layout_interne.html.twig" %}
+{% block body %}
+    <header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{asset('images/many.jpg')}}" data-background-mobile="{{asset('images/billetterie.jpg')}}" class="ct-mediaSection">
+        <div class="ct-breadcrumbs">
+            <ul class="list-inline list-unstyled text-uppercase">
+                <li><a href="{{ path('accueil')}}"><i class="fa fa-home"></i></a><i class="fa fa-angle-right"></i>liste des événements</li>
+            </ul>
+        </div>
+    </header>
+    <section class="ct-u-paddingTop50 ct-u-paddingBottom70">
+        <div class="container">
+            <div class="col-md-12">
+
+                <div class="ct-results-panel">
+                    <div class="ct-results-left"><i class="fa fa-search"></i><span class="ct-results-counter"></span></div>
+                    <div class="ct-results-right"></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <form method="GET" action="{{ path('listeDesEvenement') }}">
+                <div class="form-group form-group--search">
+                        <input id="search2" type="text" name="Keyword" class="form-control input--rounded" placeholder="mot clé"  value="{{Keyword}}">
+
+                        <button type="submit" ><i class="fa fa-search" ></i></button>
+
+                </div>
+                <div class="ct-sidebar ct-sidebar--search">
+
+
+
+                    <div class="widget widget-filter ct-js-gallery-filters" data-group="package">
+                        <div class="widget-inner">
+                            <h6 class="ct-fw-600 ct-u-marginBottom20 text-capitalize">Categorie</h6>
+                            <ul class="list-unstyled">
+                                {% for categorie in categories %}
+
+                                    <li>
+                                        <div>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;<input  type="checkbox" value="{{ categorie.libelleCategorie }}" name="categorie">
+                                            <label for="Basic"><a href="{{ path('listeDesEvenement')~"?categorie="~categorie.libelleCategorie }}">{{ categorie.libelleCategorie }}</a> </label>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    <div class="widget widget-filter ct-js-gallery-filters" data-group="package">
+                        <div class="widget-inner">
+                            <h6 class="ct-fw-600 ct-u-marginBottom20 text-capitalize">Ville</h6>
+                            <select class="ct-select ct-js-selectize ct-select--style2 ct-u-marginTop20">
+                                {%  for ville in villes %}
+                                    <option value="{{ ville['ville'] }}" name="ville" value="{{ ville.ville }}"><a href="{{ path('listeDesEvenement')~"?ville="~ville['ville'] }}"><span class="ct-deal-price">{{ ville['ville'] }}</span></a></option>
+
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="widget widget-filter ct-js-gallery-filters" data-group="package">
+                        <div class="widget-inner">
+                            <h6 class="ct-fw-600 ct-u-marginBottom20 text-capitalize">lieux</h6>
+                            <ul class="list-unstyled">
+                                {%  for lieu in lieux %}
+
+                                <li>
+                                    <div>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="{{ lieu['lieuEvenement'] }}" name="lieu">
+                                        <label for="Basic"><a href="{{ path('listeDesEvenement')~"?lieu="~lieu['lieuEvenement'] }}">{{ lieu['lieuEvenement'] }}</a></label>
+                                    </div>
+                                </li>
+                                {% endfor %}
+
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                </form>
+            </div>
+
+
+            <div class="col-md-9">
+                {% if evenement|length < 1 %}
+                    <div class="ct-textBox ct-u-backgroundGrey">
+
+                    <h2><center>liste des événements est vide</center></h2>
+                        <br></div></div>
+            {% else%}
+                {%  for e in evenement %}
+
+                <div class="ct-js-gallery ct-gallery ct-gallery--product">
+                    <div class="ct-gallery-item europe basic explore">
+                        <div class="ct-productBox ct-productBox--moreInfo ct-productBox--moreInfo-inline">
+
+
+                            <div class="ct-productBox-DescriptionInner"><a href="#">
+                                    <h4 class="text-capitalize ct-u-marginBottom10 ct-fw-700">{{ e.titreEvenement }}</h4></a>
+                                <div data-rating="{{ e.noteGlobale }}" class="starrr"></div>
+                            </div>
+                            <div class="ct-productBox-Description">
+                                <div class="ct-productBox-image">
+
+                                    <div class="ct-productBox-imageContainer"><a href="{{ path('details',{id:e.id})}}"><img style="width: 300px;height: 364px;" src="{{ asset('uploads/'~e.path) }}"></a></div>
+
+                                    <ul class="list-unstyled ct-list--iconsTop ct-u-marginBottom50">
+                                        <li><i class="fa fa-bar-chart"></i><span class="h5 ct-fw-700"><small>  {{ e.Vues }} Vues</small></span></li></ul>
+                                </div>
+                                <div class="ct-productBox-Meta text-center">
+                                    <div class="ct-productBox-deliveryInformation">
+                                        <div class="ct-u-displayTableRow">
+                                            <div class="ct-productBox-MetaItem"><span class="ct-u-colorMotive ct-fw-700 text-uppercase"><i class="fa fa-map-marker"></i> {{ e.lieuEvenement }}</span></div>
+                                            <div class="ct-productBox-MetaItem">
+
+                                                <div class="ct-productBox-price"><span class="ct-currency">{{ MinTarif }} DNT</span></div>
+                                            </div>
+                                            <div class="ct-productBox-MetaItem"><span class="ct-u-colorMotive ct-fw-700 text-uppercase"></span></div>
+
+                                        </div>
+                                        <div class="ct-u-displayTableRow">
+                                            <div class="ct-productBox-date ct-productBox-MetaItem"><span class="ct-u-colorMotive"><i class="fa fa-calendar"></i>{{ e.dateDebutEvenement|date('d/m/y') }}</span><span class="ct-date">à</span><span class="ct-u-colorMotive">{{ e.heureDebutEvenement|date('H:i:s') }}</span></div>
+
+                                            <div class="ct-productBox-date ct-productBox-MetaItem"><span class="ct-u-colorMotive">{{ e.dateFinEvenement|date('d/m/y') }}</span><span class="ct-date">à</span><span class="ct-u-colorMotive">{{ e.heureFinEvenement|date('H:i:s') }}</span></div>
+                                            <div class="ct-productBox-date ct-productBox-MetaItem"><span class="ct-u-colorMotive"></span></div>
+
+                                        </div></div></div>
+                                        <p class="ct-fw-300">
+                                            {{ e.descriptionEvenement|slice(0, 150)|raw}}...
+                                        </p><br>
+                                <div class="text-right">
+                                    <a href="{{ path('vuEvenement',{id:e.id})}}" class="btn btn-primary btn-sm text-uppercase ct-u-marginTop20">plus de détails</a>
+                                </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                {% endfor %}
+            {% endif %}
+            </div>
+
+
+        <center> <div class="navigation">
+                {{ knp_pagination_render(evenement) }}
+            </div></center>
+        </div>
+    </section>
+
+
+
+    <header id="home" class="ct-u-colorWhite text-left">
+        <div data-adaptiveHeight="true" data-animations="true" data-autoplay="true" data-infinite="true" data-autoplaySpeed="6000" data-draggable="true" data-touchMove="false" data-arrows="true" data-items="1" class="ct-slick ct-js-slick">
+            <div data-bg="{{asset('images/Colour-splash-1.jpg')}}" class="item">
+                <div class="ct-slick-inner">
+                    <div class="ct-slick-content">
+                        <div class="container">
+                            <div class="12">
+                                <div class="row">
+
+                                    <div class="col-md-8 col-md-offset-2 col-lg-offset-0 col-lg-7 ct-u-z-index4">
+                                        <h4 class="text-uppercase">newsletter subscription</h4>
+                                        <div class="ct-divider--doubleBorder ct-u-marginBoth20"></div>
+                                        <p class="ct-u-marginBottom20">Inscrivez-vous à notre newsletter pour recevoir directement sur votre email nos actualités</p>
+                                        <div role="alert" class="successMessage alert alert-success alert-dismissible">
+                                            <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">�</span></button><strong>Success!</strong>Congratulation, mission success
+                                        </div>
+                                        <div role="alert" class="errorMessage alert alert-danger alert-dismissible">
+                                            <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">�</span></button><strong>Danger!</strong>You did something wrong
+                                        </div>
+                                        <form method="POST" class="validateIt ct-u-marginBottom30"  action="#">
+                                            <div class="input-group input--withIcon"><span class="input-icon"><i class="fa fa-envelope"></i></span>
+                                                <input type="email" required="" name="email" class="form-control input-lg"><span class="input-group-btn">
+                                                <input type="submit" class="btn btn-default btn-transparent text-uppercase" value="Subscribe"></span>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+
+                                <br><br><br>
+                                <div class="row">
+                                    <div class="col-md-10 col-md-offset-1">
+                                        <div class="col-sm-4">
+                                            <div class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big"><a href="#">
+                                                    <div class="ct-iconBox-icon"><i class="fa fa-unlock-alt"></i>
+                                                    </div>
+                                                    <div class="ct-iconBox-description">
+                                                        <h4 class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big">Sécurité</h4>
+
+                                                    </div></a></div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big"><a href="#">
+                                                    <div class="ct-iconBox-icon"><i class="fa fa-heart"></i>
+                                                    </div>
+                                                    <div class="ct-iconBox-description">
+                                                        <h4 class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big">Pratique</h4>
+
+                                                    </div></a></div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big"><a href="#">
+                                                    <div class="ct-iconBox-icon"><i class="fa fa-clock-o"></i>
+                                                    </div>
+                                                    <div class="ct-iconBox-description">
+                                                        <h4 class="ct-iconBox ct-u-marginBottom20 ct-iconBox--big">Mise en place</h4>
+
+                                                    </div></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+{% endblock body %} 

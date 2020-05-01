@@ -1,0 +1,79 @@
+{% extends "::layout_interne.html.twig" %}
+{% block body %}
+    
+    <header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{asset('images/many.jpg')}}" data-background-mobile="{{asset('images/many.jpg')}}" class="ct-mediaSection">
+        
+    </header>
+     
+      <section class="ct-u-paddingTop70 ct-u-paddingBottom90">
+        <div class="container">
+        
+          <div class="row">
+            <div class="col-md-11">
+              <div id="accordion" role="tablist" aria-multiselectable="true" class="panel-group">
+                <div class="panel panel-default">
+                  <div id="headingOne" role="tab" class="panel-heading">
+                    <h4 class="ct-fw-700"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Billets</a></h4>
+                  </div>
+                  <div id="collapseOne" role="tabpanel" aria-labelledby="headingOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                    
+                      <div class="ct-js-gallery ct-gallery ct-listing">
+
+
+                          {%  for e in evenement %}
+                        <div class="ct-gallery-item spring">
+                          <div class="ct-u-displayTableVertical">
+                            <div class="ct-u-displayTableCell">{{ e.titreEvenement }}</div>
+                            <div class="ct-u-displayTableCell"><span class="ct-price">{{ e.minPrice }}DNT</span></div>
+                            <div class="ct-u-displayTableCell text-right"><a href="{{ path('vuEvenement',{id:e.id})}}" class="btn btn-xs btn-primary text-uppercase">plus de détails</a></div>
+                          </div>
+                        </div>
+{% endfor %}
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+       
+          </div>
+        </div>
+      </section>
+      <section data-stellar-background-ratio="0.3"  data-height="580" data-centerMode="false" data-type="parallax" data-background="{{asset('images/Colour-splash-1.jpg')}}" data-background-mobile="{{asset('images/Colour-splash-1.jpg')}}" class="ct-mediaSection">
+        <div class="ct-mediaSection-inner">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="ct-u-paddingBoth200">
+                  <h2 class="text-capitalize ct-u-colorWhite text-center">Nos utilisateurs témoignent</h2>
+                  <div data-adaptiveHeight="true" data-animations="true" data-autoplay="true" data-infinite="true" data-autoplaySpeed="6000" data-draggable="true" data-touchMove="false" data-arrows="false" data-items="1" class="ct-slick ct-js-slick ct-u-marginBottom10">
+                    {% for t in temoignage %}
+                    <div class="item">
+                      <div class="ct-slick-inner">
+                        <div class="ct-slick-content">
+                          <div class="ct-testimonials--inline">
+                            <div class="ct-testimonials-image"><img src="{{asset('images/compte-utilisateur-1.png')}}" alt="testimonials"></div>
+                            <div class="ct-testimonials-description">
+                              “ {{ t.content }} ”
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+
+
+
+
+ 
+{% endblock body %} 

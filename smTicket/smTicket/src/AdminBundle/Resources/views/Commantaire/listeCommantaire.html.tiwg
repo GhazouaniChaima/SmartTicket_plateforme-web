@@ -1,0 +1,122 @@
+{% extends "::layout_admin.html.twig" %}
+{% block content %}
+
+    {% set suppression = app.session.flashbag.get("suppression") %}
+
+
+<div id="page-wrapper">
+
+
+    <div class="row">
+
+        <!--  page header -->
+        <div class="col-lg-12">
+            <h1 class="page-header">liste des commantaire</h1>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <ul class="nav" >
+                        <li>
+                            <!-- search section-->
+                            <div class="input-group "><div class="text-right">
+                                    <input style="width:200px;" type="text" class="form-control" placeholder="Search...">
+                                    <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                                </div></div>
+                            <!--end search section-->
+                        </li></ul>
+
+
+                </div>
+                    <div class="panel-body">
+                        {% if (suppression is not empty) %}
+                            <div class="alert alert-danger alert-dismissible">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                Le commantaire a été bien <strong>supprimée</strong>
+                            </div>
+                        {% endif %}
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                <tr>
+                                    <th>Utlisateur</th>
+                                    <th>Evenement</th>
+                                    <th>Commantaire</th>
+                                    <th>Date Création</th>
+                                    <th>Actions</th>
+                                </tr>
+
+
+                                </thead>
+                                <tbody>
+                                {%  for c in coms %}
+                                    <tr class="odd gradeX">
+                                        <td class="center">{{ c.usercoment.username }}</td>
+                                        <td class="center">{{ c.evenement.titreEvenement }}</td>
+                                        <td class="center">{{ c.content }}</td>
+                                        <td class="center">{{ c.dateCreationCommentaire|date('d/m/y H:i')  }}</td>
+
+
+                                        <td class="center"><div class="text-center">  <a  class="btn btn-danger btn-circle btn-lg" data-toggle="modal"  href="#infos{{loop.index}}"><i class="fa fa-trash-o"></i></a></div>
+
+                                        </td>
+<
+                                   </tr>
+                                    <div class="modal fade" id="infos{{loop.index}}">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">x</button>
+                                                    <h4 class="modal-title">Confirmation</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Etes-vous sûr de vouloir supprimer ce Commantaire !
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a class="btn btn-default btn-xs" href="{{path("supprimerCommantaire", { id: c.id})}}" >OUI</a>
+                                                    <button class="btn btn-info" data-dismiss="modal">NON</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                {% endfor %}
+
+                                </tbody>
+
+                            </table>
+                            <div class="text-center">  {{ knp_pagination_render(coms) }} </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--End Advanced Tables -->
+            </div>
+        </div>
+
+
+
+    </div></div>
+    <!-- end page-wrapper -->
+
+
+    <!-- end wrapper -->
+
+
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').dataTable();
+        });
+    </script>
+
+    {% endblock content %}

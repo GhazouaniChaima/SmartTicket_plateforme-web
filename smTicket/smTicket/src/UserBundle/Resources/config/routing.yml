@@ -1,0 +1,18 @@
+
+client:
+    path:     /client
+    defaults: { _controller: ClientBundle:dashboardClient:dashboardClient}
+
+admin:
+    path:     /admin
+    defaults: { _controller: AdminBundle:dashboardAdmin:dashboardAdmin }
+    
+profil:
+    path:     /profil
+    defaults: { _controller: UserBundle:Default:index }
+
+
+
+
+
+

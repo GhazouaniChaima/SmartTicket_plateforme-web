@@ -1,0 +1,61 @@
+{% extends "::layout_interne.html.twig" %}
+{% block body %}
+    {% set total = 0 %}
+
+    <header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{asset('images/inscription.jpg')}}" data-background-mobile="{{asset('images/content/guide-tour/header-mini7.jpg')}}" class="ct-mediaSection">
+        <div class="ct-breadcrumbs">
+            <ul class="list-inline list-unstyled text-uppercase">
+                <li><a href="{{ path('accueil')}}"><i class="fa fa-home"></i></a><i class="fa fa-angle-right"></i>validation coordonnées</li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="ct-u-paddingTop60 ct-u-paddingBottom90">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 text-center">
+                    <div class="ct-textBox ct-u-backgroundGrey">
+                        <h4 class="ct-u-colorMotive text-uppercase ct-fw-700 ct-u-marginBottom50">Paiement sécurisé</h4>
+                        <div class="ct-textBox-inner">
+
+
+
+                            <form action="{{path('Paiement',{'id':commande.id})}}" method="GET">
+                                <div class="input-group text-left">
+                                    <div class="input-item"><span class="ct-fw-600">Numéro de carte</span>
+                                        <input type="text" value="" class="form-control input--withBorder ct-u-marginBottom10 input-focusMotive"  required />
+                                    </div>
+
+                                    <div class="input-item"><span class="ct-fw-600">Date d'expiration</span>
+
+                                        <input type="password" value="" class="form-control input--withBorder ct-u-marginBottom10 input-focusMotive" required />
+
+                                    </div>
+
+                                    <div class="input-item"><span class="ct-fw-600">Code CVC</span>
+
+                                        <input type="password" value="" class="form-control input--withBorder ct-u-marginBottom10 input-focusMotive"  required />
+                                    </div></div>
+                                <div class="text-right">
+                                    <a href="{{path("accueil")}}" class="btn btn-primary btn-lg text-uppercase ct-u-marginTop20">Annuler</a>
+
+                                    <button type="submit" class="btn btn-primary btn-lg text-uppercase ct-u-marginTop20">Payer</button>
+                                </div>
+                            </form></div></div></div>
+                <div class="col-md-5 text-center">
+                    <div class="ct-textBox ct-u-backgroundGrey">
+                        <h5 class="ct-u-colorMotive text-uppercase ct-fw-700 ct-u-marginBottom30">Des paiements sécurisés</h5>
+                        <ul class="list-inline list-unstyled ct-u-marginBottom40 text-left ct-list--moreSpace">
+                            <li><i class="fa fa-long-arrow-right ct-u-colorMotive"></i>SmartTicket est également la 1re billetterie en ligne sécurisée et compatible tout support : mobile, tablette et ordinateur</li>
+                            <li><i class="fa fa-long-arrow-right ct-u-colorMotive"></i>Grâce au service de sécurisation de paiement sécurisés, vous avez une garantie contre les impayés. Vous êtes ainsi protégé en cas de tentative de fraude par carte bancaire sur votre logiciel de billetterie en ligne</li>
+                            <br>
+                            <h6 class="ct-u-colorMotive text-uppercase ct-fw-700 ct-u-marginBottom30">Votre billetterie en toute sécurité</h6>
+                        </ul>
+                    </div>
+                </div>
+
+            </div></div></section>
+
+
+
+{% endblock body %}
